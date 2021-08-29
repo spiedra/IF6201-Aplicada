@@ -3,7 +3,7 @@ import { getConnection, sql } from "../database/connection";
 export const getCategories = async(req, res) => {
     const pool = await getConnection();
     const result = await pool.request().execute("PRODUCTO.OBTENER_CATEGORIAS");
-    res.json(result);
+    res.json(result.recordsets);
     pool.close();
 };
 
