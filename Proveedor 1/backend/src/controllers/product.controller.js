@@ -21,10 +21,10 @@ export const insertProduct = async(req, res) => {
         categoryId
     } = req.body;
 
-    if ((productName == null || productName == "undefined") &&
-        (productPrice == null || productPrice == "undefined") &&
-        (productPath == null || productPath == "undefined") &&
-        (productStock == null || productStock == "undefined") &&
+    if ((productName == null || productName == "undefined") ||
+        (productPrice == null || productPrice == "undefined") ||
+        (productPath == null || productPath == "undefined") ||
+        (productStock == null || productStock == "undefined") ||
         (categoryId == null || categoryId == "undefined")) {
         return res.status(400).json({ success: false, msg: "Bad Request" });
     }
@@ -65,11 +65,11 @@ export const updateProduct = async(req, res) => {
     } = req.body;
     console.log(req.body);
 
-    if ((productId == null || productId == "undefined") &&
-        (productName == null || productName == "undefined") &&
-        (productPrice == null || productPrice == "undefined") &&
-        (productPath == null || productPath == "undefined") &&
-        (productStock == null || productStock == "undefined") &&
+    if ((productId == null || productId == "undefined") ||
+        (productName == null || productName == "undefined") ||
+        (productPrice == null || productPrice == "undefined") ||
+        (productPath == null || productPath == "undefined") ||
+        (productStock == null || productStock == "undefined") ||
         (categoryId == null || categoryId == "undefined")) {
         return res.status(400).json({ success: false, msg: "Bad Request" });
     }

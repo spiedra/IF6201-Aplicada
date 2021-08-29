@@ -41,7 +41,7 @@ export const updateCategory = async(req, res) => {
 
     console.log(categoryId + " and " + categoryName);
 
-    if ((categoryId == null || categoryId == "undefined") &&
+    if ((categoryId == null || categoryId == "undefined") ||
         (categoryName == null || categoryName == "undefined")) {
         return res.status(400).json({ success: false, msg: "Bad Request" });
     }
