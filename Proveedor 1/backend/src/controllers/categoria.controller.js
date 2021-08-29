@@ -39,14 +39,11 @@ export const updateCategory = async (req, res) => {
   const { categoryId, categoryName } = req.body;
 
   console.log(categoryId + " and " + categoryName);
-
-  if (
-    (categoryId == null || categoryId == "undefined") &&
-    (categoryName == null || categoryName == "undefined")
-  ) {
-    return res.status(400).json({ success: false, msg: "Bad Request" });
-  }
-
+  
+    if ((categoryId == null || categoryId == "undefined") ||
+        (categoryName == null || categoryName == "undefined")) {
+        return res.status(400).json({ success: false, msg: "Bad Request" });
+    }
   const pool = await getConnection();
 
   let results = await pool
