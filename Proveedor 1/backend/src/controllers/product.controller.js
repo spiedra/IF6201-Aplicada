@@ -20,14 +20,14 @@ export const searchProduct = async (req, res) => {
     .input("param_ID_PRODUCTO", sql.Int, id)
     .execute("PRODUCTO.OBTENER_PRODUCTO_BY_ID");
 
-    if (results.recordsets[0][0].RESPUESTA != 0) {
-        res.status(200).json(results.recordsets);
-    }else{
-        res.status(200).json({
-            success: false,
-            message: "Product not found",
-          });
-    }
+  if (results.recordsets[0][0].RESPUESTA != 0) {
+    res.status(200).json(results.recordsets);
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Product not found",
+    });
+  }
 };
 
 export const insertProduct = async (req, res) => {
