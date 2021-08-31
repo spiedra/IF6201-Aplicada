@@ -6,6 +6,7 @@ import Title from "./components/Title/Title";
 import Label from "./components/Label/Label";
 import Input from "../../commons/Input/Input";
 import Button from "../../commons/Button/Button";
+import { TestGettingData } from "../../services/testApi";
 
 const Login = () => {
   const [user, setUser] = useState("");
@@ -23,8 +24,13 @@ const Login = () => {
     let account = { user, password };
     if (account) {
       console.log("Account: ", account);
-    }
+
+      // Test react node
+      TestGettingData()
+    } 
   }
+
+
 
   return (
     <form>
