@@ -1,15 +1,33 @@
 import { getConnection, sql } from "../database/connection";
 
-export const getProducts = async(req, res) => {
-    const pool = await getConnection();
-    const result = await pool.request().execute("PRODUCTO.OBTENER_PRODUCTOS");
-    res.json(result);
-    pool.close();
+export const getProducts = async (req, res) => {
+  const pool = await getConnection();
+  const result = await pool.request().execute("PRODUCTO.OBTENER_PRODUCTOS");
+  res.json(result.recordsets);
+  pool.close();
 };
 
-export const searchProduct = async(req, res) => {
-    const { productId } = req.params;
-    console.log(productId);
+export const searchProduct = async (req, res) => {
+  const { id } = req.params;
+
+  if (id == null || id == "undefined") {
+    return res.status(400).json({ success: false, msg: "Bad Request" });
+  }
+
+  const pool = await getConnection();
+  let results = await pool
+    .request()
+    .input("param_ID_PRODUCTO", sql.Int, id)
+    .execute("PRODUCTO.OBTENER_PRODUCTO_BY_ID");
+
+  if (results.recordsets[0][0].RESPUESTA != 0) {
+    res.status(200).json(results.recordsets);
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Product not found",
+    });
+  }
 };
 
 export const insertProduct = async(req, res) => {
@@ -21,10 +39,10 @@ export const insertProduct = async(req, res) => {
         categoryId
     } = req.body;
 
-    if ((productName == null || productName == "undefined") &&
-        (productPrice == null || productPrice == "undefined") &&
-        (productPath == null || productPath == "undefined") &&
-        (productStock == null || productStock == "undefined") &&
+    if ((productName == null || productName == "undefined") ||
+        (productPrice == null || productPrice == "undefined") ||
+        (productPath == null || productPath == "undefined") ||
+        (productStock == null || productStock == "undefined") ||
         (categoryId == null || categoryId == "undefined")) {
         return res.status(400).json({ success: false, msg: "Bad Request" });
     }
@@ -65,11 +83,11 @@ export const updateProduct = async(req, res) => {
     } = req.body;
     console.log(req.body);
 
-    if ((productId == null || productId == "undefined") &&
-        (productName == null || productName == "undefined") &&
-        (productPrice == null || productPrice == "undefined") &&
-        (productPath == null || productPath == "undefined") &&
-        (productStock == null || productStock == "undefined") &&
+    if ((productId == null || productId == "undefined") ||
+        (productName == null || productName == "undefined") ||
+        (productPrice == null || productPrice == "undefined") ||
+        (productPath == null || productPath == "undefined") ||
+        (productStock == null || productStock == "undefined") ||
         (categoryId == null || categoryId == "undefined")) {
         return res.status(400).json({ success: false, msg: "Bad Request" });
     }
@@ -126,3 +144,4 @@ export const deleteProduct = async(req, res) => {
 
     pool.close();
 }
+
