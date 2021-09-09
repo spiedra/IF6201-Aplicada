@@ -6,11 +6,13 @@ import Title from "./components/Title/Title";
 import Label from "./components/Label/Label";
 import Input from "../../commons/Input/Input";
 import Button from "../../commons/Button/Button";
-import { TestGettingData } from "../../services/testApi";
+import { TestPost } from "../../services/testApi";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
-  const [user, setUser] = useState("");
+  const [userName, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   function handleChange(name, value) {
     if (name === "userName") {
@@ -21,13 +23,24 @@ const Login = () => {
   }
 
   function handleSubmit() {
-    let account = { user, password };
+    let account = { userName, password };
     if (account) {
-      console.log("Account: ", account);
+      // console.log("Account: ", account);
+      // history.push("/home");
+      TestPost(account).then((data) => {
+        switch (data) {
+          case 1:
+            history.push("/home");
+            break;
 
-      // Test react node
-      TestGettingData()
-    } 
+          case 0:
+            break;
+
+          case -1:
+            break;
+        }
+      });
+    }
   }
 
   return (
