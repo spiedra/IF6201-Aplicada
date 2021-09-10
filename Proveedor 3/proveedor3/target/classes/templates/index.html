@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>HacheP</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+</head>
+<body>
+ 
+  <div class="container" style="padding-left: 30%; padding-top: 5%;">
+       <h1>HacheP</h1>
+        <hr>
+        <h2>Iniciar Seccion</h2>
+
+        <form action="#" th:action="@{/inicioS}" th:object="${administrador}" method="POST">
+            <input type="text" th:field="*{nombre_usuario}" placeholder="Nombre de Usuario" class="form-control text-center mb-4 col-4">
+
+            <input type="text" th:field="*{contrasennia}" placeholder="Contraseña" class="form-control text-center mb-4 col-4">
+
+            <button type="submit" class="btn btn-info col-4"> Iniciar</button>
+        </form>
+            
+       
+    </div>
+	
+</body>
+</html>
