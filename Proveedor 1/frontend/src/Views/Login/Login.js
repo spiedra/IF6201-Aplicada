@@ -44,8 +44,8 @@ const Login = () => {
   }
 
   return (
-    <form>
-      <div className="container-login">
+    <div className="container-login">
+      <form className="form__login">
         <Title text="Inicio de sesión" />
         <Label text="Usuario" />
         <Input
@@ -68,8 +68,8 @@ const Login = () => {
           handleChange={handleChange}
         />
         <Button text="Iniciar sesión" handleSubmit={handleSubmit} />
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
