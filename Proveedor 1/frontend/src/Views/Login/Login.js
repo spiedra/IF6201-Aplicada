@@ -38,6 +38,9 @@ const Login = () => {
 
           case -1:
             break;
+
+          default:
+            break;
         }
       });
     }
