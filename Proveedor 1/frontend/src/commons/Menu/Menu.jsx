@@ -13,12 +13,12 @@ const Menu = ({titleName}) => {
       <>
         <Navbar collapseOnSelect fixed="top" expand="sm" bg="dark" variant="dark">
           <Container>
-        <Navbar.Brand href="#home">{titleName}</Navbar.Brand>
+        <Navbar.Brand href="/home">{titleName}</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
                 <NavDropdown title="Productos" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.2">
+                  <NavDropdown.Item href="/categories">
                     Registrar productos
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">
@@ -26,7 +26,7 @@ const Menu = ({titleName}) => {
                   </NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/categorias">
+                  <NavDropdown.Item href="/categories">
                     Registrar categorias
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">
