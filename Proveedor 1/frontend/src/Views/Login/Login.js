@@ -8,6 +8,7 @@ import Input from "../../commons/Input/Input";
 import Button from "../../commons/Button/Button";
 import { TestPost } from "../../services/testApi";
 import { useHistory } from "react-router-dom";
+import { Container, Form } from "react-bootstrap";
 
 const Login = () => {
   const [userName, setUser] = useState("");
@@ -47,8 +48,8 @@ const Login = () => {
   }
 
   return (
-    <div className="container-login">
-      <form className="form__login">
+    <Container className="container-login">
+      <Form className="form__login">
         <Title text="Inicio de sesión" />
         <Label text="Usuario" />
         <Input
@@ -71,8 +72,8 @@ const Login = () => {
           handleChange={handleChange}
         />
         <Button text="Iniciar sesión" handleSubmit={handleSubmit} />
-      </form>
-    </div>
+      </Form>
+    </Container>
   );
 };
 
