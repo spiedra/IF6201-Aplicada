@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./Login.css";
 
 // Login Components
-import Title from "./components/Title/Title";
-import Label from "./components/Label/Label";
+import Title from "../../commons/Title/Title";
+import Label from "../../commons/Label/Label";
 import Input from "../../commons/Input/Input";
 import Button from "../../commons/Button/Button";
 import { TestPost } from "../../services/testApi";
@@ -48,7 +48,7 @@ const Login = () => {
   }
 
   return (
-    <Container className="container-login">
+    <Container className="container-login px-0">
       <Form className="form__login">
         <Title text="Inicio de sesión" />
         <Label text="Usuario" />
