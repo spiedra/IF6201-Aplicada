@@ -18,15 +18,24 @@ const Menu = ({titleName}) => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
                 <NavDropdown title="Productos" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/categories">
+                  <NavDropdown.Item href="/register/products">
                     Registrar productos
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Gestionar productos
+                  <NavDropdown.Item href="/update/products">
+                    Actualizar productos
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/search/products">
+                    Buscar productos
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/delete/products">
+                    Eliminar productos
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/list/products">
+                    Listar productos
                   </NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/categories">
+                  <NavDropdown.Item href="/register/categories">
                     Registrar categorias
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">

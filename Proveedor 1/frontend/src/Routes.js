@@ -5,6 +5,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./Views/Login/Login";
 import Home from "./Views/Home/Home";
 import RegisterCategory from "./Views/RegisterCategory/RegisterCategory";
+import RegisterProduct from "./Views/RegisterProduct/RegisterProduct";
+import SearchProduct from "./Views/SearchProduct/SearchProduct";
 
 const Routes = () => {
   return (
@@ -12,7 +14,10 @@ const Routes = () => {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/home" exact component={Home}/>
-        <Route path="/categories" exact component={RegisterCategory}/>
+        <Route path="/register/categories" exact component={RegisterCategory}/>
+        <Route path="/register/products" exact component={RegisterProduct}/>
+        <Route path="/search/products" exact component={SearchProduct}/>
+        <Route path="/delete/products" exact component={RegisterProduct}/>
       </Switch>
     </BrowserRouter>
   );
