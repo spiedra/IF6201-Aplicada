@@ -3,7 +3,11 @@ import { getConnection, sql } from "../database/connection";
 export const getCategories = async (req, res) => {
   const pool = await getConnection();
   const result = await pool.request().execute("PRODUCTO.OBTENER_CATEGORIAS");
-  res.json(result.recordsets);
+  res.status(200).json({
+    success: true,
+    message: "Successfully added",
+    response: result.recordsets,
+  });
   pool.close();
 };
 
@@ -24,11 +28,13 @@ export const insertCategory = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Successfully added",
+      flag: 1,
     });
   } else {
     res.status(200).json({
       success: false,
       message: "The category already exists",
+      flag: 0,
     });
   }
   pool.close();

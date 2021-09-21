@@ -2,25 +2,11 @@
 /*                FORMS                      */
 /*********************************************/
 
-.form__login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 85%;
-  height: 55%;
-  border-radius: 1em;
+.form__default {
   background-color: #93a8ac;
-}
-
-/*********************************************/
-/*                Container                  */
-/*********************************************/
-
-.container-login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  padding: 1em !important;
+  border-radius: 1em;
+  width: 95%;
 }
 
 /*********************************************/
@@ -28,13 +14,14 @@
 /*********************************************/
 
 @media (min-width: 575.98px) and (max-width: 991.98px) {
-  .form__login {
-    width: 55%;
+  .form__default {
+    width: 60%;
   }
 }
 
 @media (min-width: 991.98px) {
-  .form__login {
+  .form__default {
     max-width: 45em;
+    padding: 2em !important;
   }
 }
