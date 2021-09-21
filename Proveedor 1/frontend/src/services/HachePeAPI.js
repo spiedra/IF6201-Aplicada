@@ -26,3 +26,13 @@ export const RegisterCategory = (categoryName) => {
       .get("http://localhost:5000/categories")
       .then((res) => res.data.response);
   };
+
+// Product
+  export const SearchProductGet = (id) => {
+    return axios
+      .get(
+        "http://localhost:5000/products/"+id,
+      )
+      .then((res) => res.data);
+  };
+  

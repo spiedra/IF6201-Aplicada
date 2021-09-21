@@ -6,6 +6,9 @@ import Login from "./Views/Login/Login";
 import Home from "./Views/Home/Home";
 import RegisterCategory from "./Views/RegisterCategory/RegisterCategory";
 import ManageCategory from "./Views/ManageCategory/ManageCategory";
+import RegisterProduct from "./Views/RegisterProduct/RegisterProduct";
+import SearchProduct from "./Views/SearchProduct/SearchProduct";
+
 
 const Routes = () => {
   return (
@@ -15,6 +18,9 @@ const Routes = () => {
         <Route path="/home" exact component={Home}/>
         <Route path="/categories/register" exact component={RegisterCategory}/>
         <Route path="/categories/manage" exact component={ManageCategory}/>
+        <Route path="/register/products" exact component={RegisterProduct}/>
+        <Route path="/search/products" exact component={SearchProduct}/>
+        <Route path="/delete/products" exact component={RegisterProduct}/>
       </Switch>
     </BrowserRouter>
   );
