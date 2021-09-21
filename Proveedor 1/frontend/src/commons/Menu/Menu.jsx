@@ -13,8 +13,11 @@ const Menu = ({ titleName }) => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
               <NavDropdown title="Productos" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/register/products">
+                <NavDropdown.Item href="/products/register">
                   Registrar productos
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/products/manage">
+                  Gestionar productos
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/update/products">
                   Actualizar productos
