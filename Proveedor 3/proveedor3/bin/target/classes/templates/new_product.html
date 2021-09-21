@@ -7,10 +7,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
-
-		</script>
-	
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -31,25 +29,6 @@
 
 			</select>
 
-			<h6>Imagen</h6>
-				<select id="laRuta" th:field="*{ruta_imagen}" th:onchange="cambiarImagen()">
-				<option th:value="computadora.png" th:utext="Computadora">
-				</option>
-				<option th:value="telefono.png" th:utext="Telefono">
-				</option>
-				<option th:value="parlante.png" th:utext="Parlante">
-				</option>
-				<option th:value="cargador.png" th:utext="Cargador">
-				</option>
-				<option th:value="audifonos.png" th:utext="Audifonos">
-				</option>
-				<option th:value="teclado.png" th:utext="Teclado">
-				</option>
-				<option th:value="USB.png" th:utext="USB">
-				</option>
-				<option th:value="mouse.png" th:utext="Mouse">
-				</option>
-			</select>
 			<button type="submit" class="btn btn-info col-2">Guardar Producto</button>
 		</form>
 

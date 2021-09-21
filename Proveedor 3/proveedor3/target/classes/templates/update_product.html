@@ -29,7 +29,25 @@
 					th:utext="${categoria.nombre_categoria}" />
 
 			</select>
-
+		<h6>Imagen</h6>
+				<select id="laRuta" th:field="*{ruta_imagen}" th:onchange="cambiarImagen()">
+				<option th:value="computadora.png" th:utext="Computadora">
+				</option>
+				<option th:value="telefono.png" th:utext="Telefono">
+				</option>
+				<option th:value="parlante.png" th:utext="Parlante">
+				</option>
+				<option th:value="cargador.png" th:utext="Cargador">
+				</option>
+				<option th:value="audifonos.png" th:utext="Audifonos">
+				</option>
+				<option th:value="teclado.png" th:utext="Teclado">
+				</option>
+				<option th:value="USB.png" th:utext="USB">
+				</option>
+				<option th:value="mouse.png" th:utext="Mouse">
+				</option>
+			</select>
             <button type="submit" class="btn btn-info col-2"> Actualizar</button>
         </form>
 
