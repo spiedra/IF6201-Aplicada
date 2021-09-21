@@ -31,6 +31,18 @@ export const GetCategories = async () => {
   }
 };
 
+export const DeleteCategorie = async (id) => {
+  try {
+    return await axios
+      .delete("http://localhost:5000/categories",
+      { data : { categoryId: id }}
+      )
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
 // Product
 export const SearchProductGet = (id) => {
   return axios
