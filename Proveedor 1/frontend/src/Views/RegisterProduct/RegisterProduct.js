@@ -2,7 +2,6 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import FormDefault from "../../commons/FormDefault/FormDefault";
 import Menu from "../../commons/Menu/Menu";
-import Tittle from "../../commons/Title/Title";
 import "./RegisterProduct.css";
 
 const RegisterProduct = () => {
@@ -12,10 +11,7 @@ const RegisterProduct = () => {
         <Menu titleName="HachePe" />
       </Container>
       <Container className="d-flex justify-content-center">
-        <FormDefault attribute={
-          {name : "producto"
-          , action : "Registrar"}} />
-          
+        <FormDefault attribute={{ name: "producto", action: "Registrar" }} />
       </Container>
     </Container>
   );

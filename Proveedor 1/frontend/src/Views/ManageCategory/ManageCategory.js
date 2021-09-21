@@ -9,7 +9,7 @@ const ManageCategory = () => {
       <div>
         <Menu titleName="HachePe" />
         <Container className="m-0 mt-4 ms-3">
-          <h1>Registrar categorias</h1>
+          <h1>Gestionar categorias</h1>
           <hr />
         </Container>
         <Container className="mt-5">

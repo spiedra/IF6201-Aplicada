@@ -1,15 +1,12 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import Tittle from "../Title/Title";
 import Button from "../Button/Button";
-
 import "./FormDefault.css";
 
 const FormDefault = ({ attribute, handleChange, handleSubmit, param }) => {
   return (
     <>
       <Form className="form__default">
-        {/* <Tittle text={attribute.action+" "+attribute.name} /> */}
         <Form.Group className="mb-3 mt-4" controlId="defaultForm">
           <Form.Label>Nombre de {attribute.name}</Form.Label>
           <Form.Control

@@ -12,7 +12,6 @@ export const getCategories = async (req, res) => {
 };
 
 export const insertCategory = async (req, res) => {
-  console.log(JSON.stringify(req.body))
   const { categoryName } = req.body;
 
   if (categoryName == null || categoryName == "undefined") {

@@ -2,10 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
 import { RegisterCategoryPost } from "../../services/testApi";
-import FormDef from "./Components/FormDef/FormDef";
 import Menu from "../../commons/Menu/Menu";
-import "./RegisterCategory.css";
 import FormDefault from "../../commons/FormDefault/FormDefault";
+import "./RegisterCategory.css";
 
 const RegisterCategory = () => {
   const [categoryName, setCategoryName] = useState("");

@@ -1,10 +1,6 @@
 import React from "react";
-import Container from "react-bootstrap";
 import Table from 'react-bootstrap/Table'
-import Button from "../Button/Button";
-
 import "./TableDefault.css";
-
 
 const TableDefault = ({ attribute, handleChange, param }) => {
     if (attribute.list == null) {
