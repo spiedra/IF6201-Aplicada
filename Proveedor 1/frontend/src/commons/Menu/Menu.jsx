@@ -11,7 +11,7 @@ import {
 const Menu = ({titleName}) => {
     return (
       <>
-        <Navbar collapseOnSelect fixed="top" expand="sm" bg="dark" variant="dark">
+        <Navbar collapseOnSelect  expand="sm" bg="dark" variant="dark">
           <Container>
         <Navbar.Brand href="/home">{titleName}</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -26,10 +26,10 @@ const Menu = ({titleName}) => {
                   </NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/categories">
+                  <NavDropdown.Item href="/categories/register">
                     Registrar categorias
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
+                  <NavDropdown.Item href="/categories/manage">
                     Gestionar categorias
                   </NavDropdown.Item>
                 </NavDropdown>

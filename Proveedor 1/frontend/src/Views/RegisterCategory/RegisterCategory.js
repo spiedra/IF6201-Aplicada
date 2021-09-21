@@ -1,20 +1,21 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import FormDef from "../../commons/FormDef/FormDef";
+import FormDef from "./Components/FormDef/FormDef";
 import Menu from "../../commons/Menu/Menu";
-import Tittle from "../../commons/Title/Title";
 import "./RegisterCategory.css";
 
 const RegisterCategory = () => {
   return (
-    <Container className="category__container px-0">
-      <Container>
-        <Menu titleName="HachePe" />
+    <div className="container_form-category">
+      <Menu titleName="HachePe" />
+      <Container className="m-0 mt-4 ms-3">
+        <h1>Registrar categorias</h1>
+        <hr className="h1"/>
       </Container>
-      <Container className="d-flex justify-content-center">
+      <Container className="category__container px-0">
         <FormDef />
       </Container>
-    </Container>
+    </div>
   );
 };
 

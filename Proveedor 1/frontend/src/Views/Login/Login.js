@@ -6,7 +6,7 @@ import Title from "../../commons/Title/Title";
 import Label from "../../commons/Label/Label";
 import Input from "../../commons/Input/Input";
 import Button from "../../commons/Button/Button";
-import { TestPost } from "../../services/testApi";
+import { Authentication } from "../../services/HachePeAPI";
 import { useHistory } from "react-router-dom";
 import { Container, Form } from "react-bootstrap";
 
@@ -28,7 +28,7 @@ const Login = () => {
     if (account) {
       // console.log("Account: ", account);
       // history.push("/home");
-      TestPost(account).then((data) => {
+      Authentication(account).then((data) => {
         switch (data) {
           case 1:
             history.push("/home");
