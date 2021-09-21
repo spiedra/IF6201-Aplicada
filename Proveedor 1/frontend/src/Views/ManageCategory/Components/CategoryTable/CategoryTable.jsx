@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Image, Modal, Table } from "react-bootstrap";
-import { GetCategories } from "../../../../services/HachePeAPI";
+import { DeleteCategory, GetCategories } from "../../../../services/HachePeAPI";
 import iconDelete from "../../../../assets/images/delete_white_36dp.svg";
 import iconEdit from "../../../../assets/images/edit_white_36dp.svg";
-import { DeleteCategorie } from "../../../../services/HachePeAPI"
-
 import "./CategoryTable.css";
 
 const CategoryTable = () => {
@@ -28,8 +26,8 @@ const CategoryTable = () => {
 
   const handleDeleteCategory = (idCategory) => {
     console.log("Button delete: " + idCategory);
-    DeleteCategorie(idCategory).then((data) => {
-      if(data){
+    DeleteCategory(idCategory).then((data) => {
+      if (data) {
         window.location.reload(false);
       }
     });

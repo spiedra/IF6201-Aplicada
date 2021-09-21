@@ -31,7 +31,7 @@ export const GetCategories = async () => {
   }
 };
 
-export const DeleteCategorie = async (id) => {
+export const DeleteCategory = async (id) => {
   try {
     return await axios
       .delete("http://localhost:5000/categories",
