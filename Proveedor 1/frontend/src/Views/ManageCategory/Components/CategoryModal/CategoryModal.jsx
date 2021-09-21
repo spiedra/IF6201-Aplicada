@@ -1,7 +1,12 @@
 import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
-const CategoryModal = ({handleClose, handleChange, attribute}) => {
+const CategoryModal = ({
+  handleClose,
+  handleChange,
+  handleSubmit,
+  attribute,
+}) => {
   return (
     <>
       <Modal size="lg" show={attribute.show} onHide={handleClose}>
@@ -25,7 +30,15 @@ const CategoryModal = ({handleClose, handleChange, attribute}) => {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button
+            variant="primary"
+            onClick={() =>
+              handleSubmit({
+                categoryId: attribute.currentCategorId,
+                categoryName: attribute.currentCategory,
+              })
+            }
+          >
             Guardar cambios
           </Button>
         </Modal.Footer>

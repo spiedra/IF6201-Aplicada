@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from "react";
 import { Button, Image, Table } from "react-bootstrap";
-import { DeleteCategory, GetCategories } from "../../../../services/HachePeAPI";
+import {
+  DeleteCategory,
+  GetCategories,
+  UpdateCategory,
+} from "../../../../services/HachePeAPI";
+import CategoryModal from "../CategoryModal/CategoryModal";
+
+// Images
 import iconDelete from "../../../../assets/images/delete_white_36dp.svg";
 import iconEdit from "../../../../assets/images/edit_white_36dp.svg";
+
+// Style
 import "./CategoryTable.css";
-import CategoryModal from "../CategoryModal/CategoryModal";
 
 const CategoryTable = () => {
   // States
   const [data, setData] = useState([]);
   const [currentCategory, setValueCategory] = useState();
+  const [currentCategorId, setCategoryId] = useState();
   const [show, setShow] = useState(false);
 
   // Handlers
   const handleClose = () => setShow(false);
-  // const handleSaveChange = () => console.log("saving changes");
 
-  const handleShow = (value) => {
-    setValueCategory(value);
+  const handleSubmit = (category) => {
+    if (category) {
+      UpdateCategory(category).then((data) => {
+        setShow(false);
+        window.location.reload(false);
+      });
+    }
+  };
+
+  const handleShow = (category) => {
+    setCategoryId(category.categoryId);
+    setValueCategory(category.categoryName);
     setShow(true);
   };
 
   const handleChange = (name, value) => {
     setValueCategory(value);
-    console.log("name: " + name + ", value:  " + value);
   };
 
   const handleDeleteCategory = (idCategory) => {
@@ -70,7 +87,12 @@ const CategoryTable = () => {
                   </Button>
                   <Button
                     className="btn-primary mx-1"
-                    onClick={() => handleShow(item.NOMBRE_CATEGORIA)}
+                    onClick={() =>
+                      handleShow({
+                        categoryId: item.ID_CATEGORIA,
+                        categoryName: item.NOMBRE_CATEGORIA,
+                      })
+                    }
                   >
                     <Image src={iconEdit} alt="Icono de modificar" />
                   </Button>
@@ -83,7 +105,12 @@ const CategoryTable = () => {
       <CategoryModal
         handleClose={handleClose}
         handleChange={handleChange}
-        attribute={{ show: show, currentCategory: currentCategory }}
+        handleSubmit={handleSubmit}
+        attribute={{
+          show: show,
+          currentCategorId: currentCategorId,
+          currentCategory: currentCategory,
+        }}
       />
     </>
   );

@@ -12,13 +12,17 @@ export const Authentication = (account) => {
 };
 
 // Category
-export const RegisterCategory = (categoryName) => {
-  return axios
-    .post(
-      "http://localhost:5000/categories",
-      qs.stringify({ categoryName: categoryName })
-    )
-    .then((res) => res.data.flag);
+export const RegisterCategory = async (categoryName) => {
+  try {
+    return await axios
+      .post(
+        "http://localhost:5000/categories",
+        qs.stringify({ categoryName: categoryName })
+      )
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
 };
 
 export const GetCategories = async () => {
@@ -34,8 +38,22 @@ export const GetCategories = async () => {
 export const DeleteCategory = async (id) => {
   try {
     return await axios
-      .delete("http://localhost:5000/categories",
-      { data : { categoryId: id }}
+      .delete("http://localhost:5000/categories", { data: { categoryId: id } })
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export const UpdateCategory = async (category) => {
+  try {
+    return await axios
+      .put(
+        "http://localhost:5000/categories",
+        qs.stringify({
+          categoryId: category.categoryId,
+          categoryName: category.categoryName,
+        })
       )
       .then((res) => res.data.flag);
   } catch (err) {
