@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Image, Modal, Table } from "react-bootstrap";
+import { Button, Image, Table } from "react-bootstrap";
 import { DeleteCategory, GetCategories } from "../../../../services/HachePeAPI";
 import iconDelete from "../../../../assets/images/delete_white_36dp.svg";
 import iconEdit from "../../../../assets/images/edit_white_36dp.svg";
 import "./CategoryTable.css";
+import CategoryModal from "../CategoryModal/CategoryModal";
 
 const CategoryTable = () => {
+  // States
   const [data, setData] = useState([]);
   const [currentCategory, setValueCategory] = useState();
-
-  // Modal handlers
-  const handleClose = () => setShow(false);
   const [show, setShow] = useState(false);
+
+  // Handlers
+  const handleClose = () => setShow(false);
   // const handleSaveChange = () => console.log("saving changes");
 
   const handleShow = (value) => {
@@ -33,6 +35,7 @@ const CategoryTable = () => {
     });
   };
 
+  // Getting the list of categories
   useEffect(() => {
     (async () => {
       return GetCategories().then((data) => {
@@ -77,33 +80,11 @@ const CategoryTable = () => {
           })}
         </tbody>
       </Table>
-
-      <Modal size="lg" show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modificar categoria</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Nuevo nombre</Form.Label>
-              <Form.Control
-                type="text"
-                name="currentCategory"
-                value={currentCategory}
-                onChange={(e) => handleChange(e.target.name, e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Guardar cambios
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <CategoryModal
+        handleClose={handleClose}
+        handleChange={handleChange}
+        attribute={{ show: show, currentCategory: currentCategory }}
+      />
     </>
   );
 };
