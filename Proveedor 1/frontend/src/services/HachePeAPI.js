@@ -77,3 +77,18 @@ export const GetProducts = async () => {
     console.log(err.message);
   }
 };
+
+export const PostRegisterProduct = async (product) => {
+  try {
+    return await axios
+      .post(
+        "http://localhost:5000/products",
+        qs.stringify(product)
+      )
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
+
+
+};

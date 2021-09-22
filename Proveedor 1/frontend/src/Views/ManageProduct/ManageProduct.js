@@ -28,6 +28,10 @@ const ManageProduct = () => {
     })();
   }, []);
 
+  function handleSubmit(name, value){
+    console.log("Hola estoy de prueba");
+  }
+
   return (
     <>
       <div>
@@ -37,7 +41,7 @@ const ManageProduct = () => {
           <hr />
         </Container>
         <Container className="mt-4">
-          <ProductSearch />
+          <ProductSearch handleSubmit={handleSubmit} />
         </Container>
         <Container className="mt-4">
           <ProductTable

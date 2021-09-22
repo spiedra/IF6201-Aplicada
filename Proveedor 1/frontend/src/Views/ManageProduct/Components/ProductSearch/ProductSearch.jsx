@@ -1,10 +1,11 @@
 import React from "react";
-import { Form, Button, FloatingLabel, Row, Col } from "react-bootstrap";
+import { Form , FloatingLabel, Row, Col } from "react-bootstrap";
+import Button from "../../../../commons/Button/Button";
 
 // Icon
 import iconSearch from  "../../../../assets/images/search_white_36dp.svg";
 
-const ProductSearch = () => {
+const ProductSearch = ({handleSubmit}) => {
   return (
     <>
       <Row className="g-2">
@@ -14,7 +15,7 @@ const ProductSearch = () => {
           </FloatingLabel>
         </Col>
         <Col md>
-          <Button className="mt-1"><img src={iconSearch} alt="Icono no encontrado"/></Button>
+          <Button className="mt-1" text="Buscar" handleSubmit={handleSubmit} icon={iconSearch} />
         </Col>
       </Row>
     </>

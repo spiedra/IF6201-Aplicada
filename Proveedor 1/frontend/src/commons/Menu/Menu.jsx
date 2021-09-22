@@ -19,18 +19,6 @@ const Menu = ({ titleName }) => {
                 <NavDropdown.Item href="/products/manage">
                   Gestión productos
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/update/products">
-                  Actualizar productos
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/search/products">
-                  Buscar productos
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/delete/products">
-                  Eliminar productos
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/list/products">
-                  Listar productos
-                </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/categories/register">

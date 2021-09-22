@@ -65,11 +65,13 @@ export const insertProduct = async(req, res) => {
         res.status(200).json({
             success: true,
             message: "Successfully added",
+            flag: 1
         });
     } else {
         res.status(200).json({
             success: false,
             message: "The category already exists",
+            flag : 0
         });
     }
 
