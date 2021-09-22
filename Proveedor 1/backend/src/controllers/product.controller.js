@@ -113,11 +113,13 @@ export const updateProduct = async(req, res) => {
         res.status(200).json({
             success: true,
             message: "Successfully updated",
+            flag : 1
         });
     } else {
         res.status(200).json({
             success: false,
             message: "Fail to update",
+            flag : 0
         });
     }
 
@@ -139,11 +141,13 @@ export const deleteProduct = async(req, res) => {
         res.status(200).json({
             success: true,
             message: "Successfully deleted",
+            flag : 1
         });
     } else {
         res.status(200).json({
             success: false,
             message: "Fail to delete",
+            flag : 0
         });
     }
 

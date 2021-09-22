@@ -28,5 +28,5 @@ export const SearchProductGet = (id) => {
     .get(
       "http://localhost:5000/products/"+id,
     )
-    .then((res) => res.data);
+    .then((res) => res.data.flag);
 };

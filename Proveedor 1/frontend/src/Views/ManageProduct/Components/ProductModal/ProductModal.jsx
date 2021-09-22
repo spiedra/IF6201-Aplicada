@@ -5,7 +5,7 @@ import "./ProductModal.css";
 const ProductModal = ({
   handleClose,
   handleChange,
-  handleSubmit,
+  handleUpdate,
   attribute,
 }) => {
   return (
@@ -21,8 +21,7 @@ const ProductModal = ({
               <Form.Control
                 type="text"
                 name="productName"
-                value={attribute.currentProductName}
-                placeholder={"Ingresa nombre del producto"}
+                defaultValue={attribute.currentProductName}
                 onChange={(e) => handleChange(e.target.name, e.target.value)}
               />
             </Form.Group>
@@ -30,8 +29,8 @@ const ProductModal = ({
               <Form.Label>Precio</Form.Label>
               <Form.Control
                 type="number"
-                name="priceProduct"
-                value={attribute.currentProductPrice}
+                name="productPrice"
+                defaultValue={attribute.currentProductPrice}
                 min={0}
                 onChange={(e) => handleChange(e.target.name, e.target.value)}
               />
@@ -39,35 +38,38 @@ const ProductModal = ({
             <Form.Group controlId="formFileLg" className="mb-2">
               <Form.Label>Imagen actual</Form.Label>
               <img
-                src={
-                  attribute.currentProductImg
-                    ? require("../../../../assets/images/" +
-                        attribute.currentProductImg).default
-                    : require("../../../../assets/images/guzzi.png").default
+                src={require("../../../../assets/images/" + "guzzi.png").default
+                  /*attribute.currentProductImg
+                    ? require("../../../../assets/images/" + "guzzi.png"
+                        //attribute.currentProductImg).default
+                    : require("../../../../assets/images/guzzi.png").default*/
                 }
                 className="image__product--modal"
                 alt="Imagen no encontrada"
               />
-              <Form.Control type="file" size="md" />
+              <Form.Control 
+              name="productPath"
+              type="file"
+              size="md" />
             </Form.Group>
             <Form.Group controlId="formFileLg" className="mb-2">
               <Form.Label>Cantidad existente</Form.Label>
               <Form.Control
                 type="number"
-                name="stock"
-                value={attribute.currentProductStock}
+                name="productStock"
+                defaultValue={attribute.currentProductStock}
                 min={0}
                 onChange={(e) => handleChange(e.target.name, e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="formFileLg">
               <Form.Label>Categoría</Form.Label>
-              <Form.Select>
-                <option disabled selected>
+              <Form.Select name="categoryId" onChange = {(e) => handleChange(e.target.name, e.target.value)}>
+                <option disabled selected value={attribute.currentProductIdCategory}>
                   {"Categoría actual: " + attribute.currentProductCategory}
                 </option>
                 {attribute.categories.map((item, index) => (
-                  <option key={index} value={index}>
+                  <option key={index} value={item.ID_CATEGORIA}>
                     {item.NOMBRE_CATEGORIA}
                   </option>
                 ))}
@@ -82,9 +84,9 @@ const ProductModal = ({
           <Button
             variant="primary"
             onClick={() =>
-              handleSubmit({
-                categoryId: attribute.currentCategorId,
-                categoryName: attribute.currentCategory,
+              handleUpdate({
+                // categoryId: attribute.currentCategorId,
+                // categoryName: attribute.currentCategory,
               })
             }
           >

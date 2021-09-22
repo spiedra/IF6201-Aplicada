@@ -89,6 +89,27 @@ export const PostRegisterProduct = async (product) => {
   } catch (err) {
     console.log(err.message);
   }
+};
 
+export const UpdateProduct = async (product) => {
+  try {
+    return await axios
+      .put(
+        "http://localhost:5000/products",
+        qs.stringify(product)
+      )
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
 
+export const DeleteProduct = async (id) => {
+  try {
+    return await axios
+      .delete("http://localhost:5000/products", { data: { productId: id } })
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
 };

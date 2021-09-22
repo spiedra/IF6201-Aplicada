@@ -38,7 +38,6 @@ const RegisterProduct = () => {
   }
 
   function handleChange(name, value) {
-    console.log(name + " -> " + value);
     switch (name) {
       case "productName":
         setProductName(value);
