@@ -6,26 +6,27 @@ import iconDelete from "../../../../assets/images/delete_white_36dp.svg";
 import iconEdit from "../../../../assets/images/edit_white_36dp.svg";
 import ProductModal from "../ProductModal/ProductModal";
 
-const ProductTable = ({ attribute }) => {
+const ProductTable = ({ attribute, handleChange, handleUpdate , handleDelete }) => {
   const [currentProductId, setProductId] = useState();
   const [currentProductName, setProductName] = useState();
   const [currentProductPrice, setProductPrice] = useState()
   const [currentProductStock, setProductStock] = useState();
   const [currentProductCategory, setProductCategory] = useState();
+  const [productIdCategory, setProductIdCategory] = useState();
   const [currentProductImg, setProductImg] = useState();
   const [show, setShow] = useState(false);
 
   // Handlers
   const handleClose = () => setShow(false);
 
-  const handleSubmit = (category) => {
+  /*const handleSubmit = (category) => {
     // if (category) {
     //   UpdateCategory(category).then((data) => {
     //     setShow(false);
     //     window.location.reload(false);
     //   });
     // }
-  };
+  };*/
 
   const handleShow = (product) => {
     setProductId(product.productId);
@@ -33,22 +34,19 @@ const ProductTable = ({ attribute }) => {
     setProductPrice(product.productPrice);
     setProductStock(product.productStock);
     setProductCategory(product.productCategory);
+    setProductIdCategory(product.productIdCategory)
     setProductImg(product.productImg);
+
+    handleChange("productId", product.productId);
+    handleChange("productName", product.productName);
+    handleChange("productPrice", product.productPrice);
+    handleChange("productPath", product.productImg);
+    handleChange("productStock", product.productStock);
+    handleChange("categoryId", product.productIdCategory);
+
     setShow(true);
   };
 
-  const handleChange = (name, value) => {
-    // setValueCategory(value);
-  };
-
-  const handleDeleteCategory = (idCategory) => {
-    // console.log("Button delete: " + idCategory);
-    // DeleteCategory(idCategory).then((data) => {
-    //   if (data) {
-    //     window.location.reload(false);
-    //   }
-    // });
-  };
 
   return (
     <>
@@ -77,7 +75,7 @@ const ProductTable = ({ attribute }) => {
                 <td className="d-flex justify-content-center">
                   <img
                     src={
-                      require("../../../../assets/images/" + item.RUTA_IMAGEN)
+                      require("../../../../assets/images/" + "guzzi.png")//Cambiar al implementar la subida de imagen
                         .default
                     }
                     className="image__product"
@@ -88,7 +86,7 @@ const ProductTable = ({ attribute }) => {
                   <Button
                     id={index}
                     className="btn-danger mx-1 mb-1"
-                    // onClick={() => handleDeleteCategory(item.ID_CATEGORIA)}
+                    onClick={() => handleDelete(item.ID_PRODUCTO)}
                   >
                     <Image src={iconDelete} alt="Icono de eliminar" />
                   </Button>
@@ -101,6 +99,7 @@ const ProductTable = ({ attribute }) => {
                         productPrice: item.PRECIO,
                         productStock: item.STOCK,
                         productCategory: item.NOMBRE_CATEGORIA,
+                        productIdCategory: item.ID_CATEGORIA,
                         productImg: item.RUTA_IMAGEN,
                       })
                     }
@@ -116,7 +115,7 @@ const ProductTable = ({ attribute }) => {
       <ProductModal
         handleClose={handleClose}
         handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        handleUpdate={handleUpdate}
         attribute={{
           show: show,
           categories: attribute.categories,          
@@ -125,6 +124,7 @@ const ProductTable = ({ attribute }) => {
           currentProductPrice: currentProductPrice,
           currentProductStock: currentProductStock,
           currentProductCategory: currentProductCategory,
+          currentProductIdCategory: productIdCategory,
           currentProductImg: currentProductImg,
         }}
       />
