@@ -8,6 +8,7 @@ import RegisterCategory from "./Views/RegisterCategory/RegisterCategory";
 import ManageCategory from "./Views/ManageCategory/ManageCategory";
 import RegisterProduct from "./Views/RegisterProduct/RegisterProduct";
 import SearchProduct from "./Views/SearchProduct/SearchProduct";
+import ManageProduct from "./Views/ManageProduct/ManageProduct";
 
 
 const Routes = () => {
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/categories/register" exact component={RegisterCategory}/>
         <Route path="/categories/manage" exact component={ManageCategory}/>
         <Route path="/products/register" exact component={RegisterProduct}/>
+        <Route path="/products/manage" exact component={ManageProduct}/>
         <Route path="/search/products" exact component={SearchProduct}/>
         <Route path="/delete/products" exact component={RegisterProduct}/>
       </Switch>

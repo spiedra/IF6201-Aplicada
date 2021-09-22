@@ -67,3 +67,13 @@ export const SearchProductGet = (id) => {
     .get("http://localhost:5000/products/" + id)
     .then((res) => res.data);
 };
+
+export const GetProducts = async () => {
+  try {
+    return await axios
+      .get("http://localhost:5000/products")
+      .then((res) => res.data.response);
+  } catch (err) {
+    console.log(err.message);
+  }
+};

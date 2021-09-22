@@ -80,7 +80,7 @@ const CategoryTable = () => {
                 <td>
                   <Button
                     id={index}
-                    className="btn-danger mx-1 mb-sm-2"
+                    className="btn-danger mx-1"
                     onClick={() => handleDeleteCategory(item.ID_CATEGORIA)}
                   >
                     <Image src={iconDelete} alt="Icono de eliminar" />

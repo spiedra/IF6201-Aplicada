@@ -20,7 +20,7 @@ const RegisterProduct = () => {
     <div className="container_form-category">
       <Menu titleName="HachePe" />
       <Container className="m-0 mt-4 ms-3">
-        <h1>Registrar productos</h1>
+        <h1>Registro producto</h1>
         <hr className="h1" />
       </Container>
       <Container className="product__container--register px-0 mb-5">

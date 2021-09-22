@@ -14,10 +14,10 @@ const Menu = ({ titleName }) => {
             <Nav>
               <NavDropdown title="Productos" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/products/register">
-                  Registrar productos
+                  Registro producto
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/products/manage">
-                  Gestionar productos
+                  Gestión productos
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/update/products">
                   Actualizar productos
@@ -34,10 +34,10 @@ const Menu = ({ titleName }) => {
               </NavDropdown>
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/categories/register">
-                  Registrar categorias
+                  Registro categoría
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/categories/manage">
-                  Gestionar categorias
+                  Gestión categorías
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
