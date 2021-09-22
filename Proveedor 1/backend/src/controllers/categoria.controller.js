@@ -40,16 +40,45 @@ export const insertCategory = async (req, res) => {
   pool.close();
 };
 
+export const deleteCategory = async (req, res) => {
+  const { categoryId } = req.body;
+
+  if (categoryId == null || categoryId == "undefined") {
+    return res.status(400).json({ success: false, msg: "Bad Request" });
+  }
+
+  const pool = await getConnection();
+  let results = await pool
+    .request()
+    .input("param_ID_CATEGORIA", sql.Int, categoryId)
+    .execute("PRODUCTO.sp_ELIMINAR_CATEGORIA");
+    console.log(JSON.stringify(results.recordsets));
+  if (results.recordsets[0][0].RESPONSE == 1) {
+    res.status(200).json({
+      success: true,
+      message: "Successfully deleted",
+      flag: 1
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Fail to delete",
+      flag: 0
+    });
+  }
+  pool.close();
+};
+
 export const updateCategory = async (req, res) => {
   console.log(req.body);
   const { categoryId, categoryName } = req.body;
 
   console.log(categoryId + " and " + categoryName);
-  
-    if ((categoryId == null || categoryId == "undefined") ||
-        (categoryName == null || categoryName == "undefined")) {
-        return res.status(400).json({ success: false, msg: "Bad Request" });
-    }
+
+  if ((categoryId == null || categoryId == "undefined") ||
+    (categoryName == null || categoryName == "undefined")) {
+    return res.status(400).json({ success: false, msg: "Bad Request" });
+  }
   const pool = await getConnection();
 
   let results = await pool
@@ -61,11 +90,13 @@ export const updateCategory = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Successfully updated",
+      flag: 1
     });
   } else {
     res.status(200).json({
       success: false,
       message: "Fail to update",
+      flag: 0
     });
   }
   pool.close();
