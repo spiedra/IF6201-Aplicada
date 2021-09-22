@@ -5,22 +5,29 @@ import { RegisterCategoryPost } from "../../services/testApi";
 import Menu from "../../commons/Menu/Menu";
 import FormDefault from "../../commons/FormDefault/FormDefault";
 import "./RegisterCategory.css";
+import ModalAlert from "../../commons/ModalAlert/ModalAlert";
 
 const RegisterCategory = () => {
   const [categoryName, setCategoryName] = useState("");
 
+  // Alert
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+
   function handleChange(name, value) {
     setCategoryName(value);
-    console.log("Name: "+name+" "+value)
   }
 
   function handleSubmit() {
-    let category = { categoryName };
-    if (category.categoryName !== null) {
-      RegisterCategoryPost(category).then((data) => {
-        console.log("Registrado " + data);
-      });
-    }
+    // let category = { categoryName };
+    // if (category.categoryName !== null) {
+    //   RegisterCategoryPost(category).then((data) => {
+    //     <ModalAlert attribute={{message: "Categoría registrada correctamente"}} />
+    //   });
+    // }
+    console.log("jcspi");
+    setShow(true);
+    <ModalAlert attribute={{message: "Categoría registrada correctamente", show: show}} handleClose={handleClose} />
   }
 
   return (
