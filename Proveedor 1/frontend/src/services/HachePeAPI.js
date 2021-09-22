@@ -12,13 +12,17 @@ export const Authentication = (account) => {
 };
 
 // Category
-export const RegisterCategory = (categoryName) => {
-  return axios
-    .post(
-      "http://localhost:5000/categories",
-      qs.stringify({ categoryName: categoryName })
-    )
-    .then((res) => res.data.flag);
+export const RegisterCategory = async (categoryName) => {
+  try {
+    return await axios
+      .post(
+        "http://localhost:5000/categories",
+        qs.stringify({ categoryName: categoryName })
+      )
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
 };
 
 export const GetCategories = async () => {
@@ -31,11 +35,25 @@ export const GetCategories = async () => {
   }
 };
 
-export const DeleteCategorie = async (id) => {
+export const DeleteCategory = async (id) => {
   try {
     return await axios
-      .delete("http://localhost:5000/categories",
-      { data : { categoryId: id }}
+      .delete("http://localhost:5000/categories", { data: { categoryId: id } })
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export const UpdateCategory = async (category) => {
+  try {
+    return await axios
+      .put(
+        "http://localhost:5000/categories",
+        qs.stringify({
+          categoryId: category.categoryId,
+          categoryName: category.categoryName,
+        })
       )
       .then((res) => res.data.flag);
   } catch (err) {
@@ -48,4 +66,50 @@ export const SearchProductGet = (id) => {
   return axios
     .get("http://localhost:5000/products/" + id)
     .then((res) => res.data);
+};
+
+export const GetProducts = async () => {
+  try {
+    return await axios
+      .get("http://localhost:5000/products")
+      .then((res) => res.data.response);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export const PostRegisterProduct = async (product) => {
+  try {
+    return await axios
+      .post(
+        "http://localhost:5000/products",
+        qs.stringify(product)
+      )
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export const UpdateProduct = async (product) => {
+  try {
+    return await axios
+      .put(
+        "http://localhost:5000/products",
+        qs.stringify(product)
+      )
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export const DeleteProduct = async (id) => {
+  try {
+    return await axios
+      .delete("http://localhost:5000/products", { data: { productId: id } })
+      .then((res) => res.data.flag);
+  } catch (err) {
+    console.log(err.message);
+  }
 };
