@@ -1,0 +1,28 @@
+/*********************************************/
+/*                FORMS                      */
+/*********************************************/
+
+.form__product {
+    background-color: #93a8ac;
+    padding: 1em !important;
+    border-radius: 1em;
+    width: 95%;
+    margin-top: 3em;
+  }
+  
+  /*********************************************/
+  /*                Responsive                 */
+  /*********************************************/
+  
+  @media (min-width: 575.98px) and (max-width: 991.98px) {
+    .form__product {
+      width: 80%;
+    }
+  }
+  
+  @media (min-width: 991.98px) {
+    .form__product {
+      max-width: 45em;
+      padding: 2em !important;
+    }
+  }

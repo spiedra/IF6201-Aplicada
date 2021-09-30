@@ -3,7 +3,7 @@ import './Input.css';
 
 const Input = ({attribute, handleChange, param}) =>{
     return(
-        <div className="container-input">
+        <div className="container-input--login mx-3">
             <input
             id={attribute.id}
             name={attribute.name}

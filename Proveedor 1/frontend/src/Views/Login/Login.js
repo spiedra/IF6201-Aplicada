@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import "./Login.css";
 
 // Login Components
-import Title from "./components/Title/Title";
-import Label from "./components/Label/Label";
+import Title from "../../commons/Title/Title";
+import Label from "../../commons/Label/Label";
 import Input from "../../commons/Input/Input";
 import Button from "../../commons/Button/Button";
-import { TestGettingData } from "../../services/testApi";
+import { Authentication } from "../../services/HachePeAPI";
+import { useHistory } from "react-router-dom";
+import { Container, Form } from "react-bootstrap";
 
 const Login = () => {
-  const [user, setUser] = useState("");
+  const [userName, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   function handleChange(name, value) {
     if (name === "userName") {
@@ -21,20 +24,32 @@ const Login = () => {
   }
 
   function handleSubmit() {
-    let account = { user, password };
+    let account = { userName, password };
     if (account) {
-      console.log("Account: ", account);
+      // console.log("Account: ", account);
+      // history.push("/home");
+      Authentication(account).then((data) => {
+        switch (data) {
+          case 1:
+            history.push("/home");
+            break;
 
-      // Test react node
-      TestGettingData()
-    } 
+          case 0:
+            break;
+
+          case -1:
+            break;
+
+          default:
+            break;
+        }
+      });
+    }
   }
 
-
-
   return (
-    <form>
-      <div className="container-login">
+    <Container className="container-login px-0">
+      <Form className="form__login">
         <Title text="Inicio de sesión" />
         <Label text="Usuario" />
         <Input
@@ -57,8 +72,8 @@ const Login = () => {
           handleChange={handleChange}
         />
         <Button text="Iniciar sesión" handleSubmit={handleSubmit} />
-      </div>
-    </form>
+      </Form>
+    </Container>
   );
 };
 

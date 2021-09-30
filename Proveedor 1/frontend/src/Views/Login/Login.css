@@ -1,6 +1,40 @@
-.container-login{
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
+/*********************************************/
+/*                FORMS                      */
+/*********************************************/
+
+.form__login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  height: 55%;
+  border-radius: 1em;
+  background-color: #93a8ac;
+}
+
+/*********************************************/
+/*                Container                  */
+/*********************************************/
+
+.container-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/*********************************************/
+/*                Responsive                 */
+/*********************************************/
+
+@media (min-width: 575.98px) and (max-width: 991.98px) {
+  .form__login {
+    width: 55%;
+  }
+}
+
+@media (min-width: 991.98px) {
+  .form__login {
+    max-width: 45em;
+  }
 }

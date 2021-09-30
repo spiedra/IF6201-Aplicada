@@ -1,0 +1,27 @@
+/*********************************************/
+/*                FORMS                      */
+/*********************************************/
+
+.form__default {
+  background-color: #93a8ac;
+  padding: 1em !important;
+  border-radius: 1em;
+  width: 95%;
+}
+
+/*********************************************/
+/*                Responsive                 */
+/*********************************************/
+
+@media (min-width: 575.98px) and (max-width: 991.98px) {
+  .form__default {
+    width: 80%;
+  }
+}
+
+@media (min-width: 991.98px) {
+  .form__default {
+    max-width: 45em;
+    padding: 2em !important;
+  }
+}

@@ -3,7 +3,11 @@ import { getConnection, sql } from "../database/connection";
 export const getProducts = async (req, res) => {
   const pool = await getConnection();
   const result = await pool.request().execute("PRODUCTO.OBTENER_PRODUCTOS");
-  res.json(result.recordsets);
+  res.status(200).json({
+    success: true,
+    message: "Successfully added",
+    response: result.recordsets,
+  });
   pool.close();
 };
 
@@ -61,11 +65,13 @@ export const insertProduct = async(req, res) => {
         res.status(200).json({
             success: true,
             message: "Successfully added",
+            flag: 1
         });
     } else {
         res.status(200).json({
             success: false,
             message: "The category already exists",
+            flag : 0
         });
     }
 
@@ -107,11 +113,13 @@ export const updateProduct = async(req, res) => {
         res.status(200).json({
             success: true,
             message: "Successfully updated",
+            flag : 1
         });
     } else {
         res.status(200).json({
             success: false,
             message: "Fail to update",
+            flag : 0
         });
     }
 
@@ -133,11 +141,13 @@ export const deleteProduct = async(req, res) => {
         res.status(200).json({
             success: true,
             message: "Successfully deleted",
+            flag : 1
         });
     } else {
         res.status(200).json({
             success: false,
             message: "Fail to delete",
+            flag : 0
         });
     }
 

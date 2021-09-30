@@ -1,0 +1,4 @@
+.main-container__navbar{
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>HacheP</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="container">
+
+		<h2>Guardar Productos</h2>
+
+		<form action="#" th:action="@{/saveProduct}" th:object="${producto}" method="POST">
+			<input type="text" th:field="*{nombre}" placeholder="Nombre" class="form-control mb-4 col-4">
+			<h6>Precio</h6>
+			<input type="text" th:field="*{precio}" placeholder="Precio" class="form-control mb-4 col-4">
+			<h6>Cantidad en Bodega</h6>
+			<input type="text" th:field="*{stock}" placeholder="Cantidad en Bodega" class="form-control mb-4 col-4">
+			<h6>Categoria</h6>
+			<select th:field="*{id_categoria}">
+				<option th:each="categoria : ${listaCategorias}" th:value="${categoria.id}"
+					th:utext="${categoria.nombre_categoria}" />
+
+			</select>
+
+			<button type="submit" class="btn btn-info col-2">Guardar Producto</button>
+		</form>
+
+		<a th:href="@{/productosView}">Regresar</a>
+	</div>
+
+</body>
+
+</html>
