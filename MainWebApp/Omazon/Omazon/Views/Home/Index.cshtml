@@ -24,23 +24,23 @@
     @for (int i = 0; i < 11; i++)
     {
         <form asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
-            
-                <div class="card">
-                    <img src="/Imagenes/prueba.jpg" class="card-img-top" alt="foto-producto-de-limpieza">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto número @i</h5>
-                        <p class="card-text">
-                            Descripción
-                        </p>
-                        <h3> Precio : 100 US$</h3>
-                    </div>
-                    <div class="card-footer">
-                        <input type="hidden" asp-for="@Model.Nombre" value="Producto número @i"/>
-                        <button type="submit" class="btn btn-primary">Ver</button>
-                        <button type="button" id="btnCarrito" onclick="agregarFavorito(); return false;" class="btn btn-secondary">Agregar al carrito</button>
-                    </div>
+
+            <div class="card">
+                <img src="/Imagenes/prueba.jpg" class="card-img-top" alt="foto-producto-de-limpieza">
+                <div class="card-body">
+                    <h5 class="card-title">Producto número @i</h5>
+                    <p class="card-text">
+                        Descripción
+                    </p>
+                    <h3> Precio : 100 US$</h3>
                 </div>
-           
+                <div class="card-footer">
+                    <input type="hidden" asp-for="@Model.Nombre" value="Producto número @i" />
+                    <button type="submit" class="btn btn-primary">Ver</button>
+                    <button type="button" id="btnCarrito" onclick="agregarFavorito(); return false;" class="btn btn-secondary">Agregar al carrito</button>
+                </div>
+            </div>
+
         </form>
     }
 </div>
