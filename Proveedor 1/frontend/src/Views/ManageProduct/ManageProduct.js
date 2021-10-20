@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Menu from "../../commons/Menu/Menu";
-import { GetCategories, GetProducts, DeleteProduct, UpdateProduct } from "../../services/HachePeAPI";
+import {
+  GetCategories,
+  GetProducts,
+  DeleteProduct,
+  UpdateProduct,
+} from "../../services/HachePeAPI";
 import ProductSearch from "./Components/ProductSearch/ProductSearch";
 import ProductTable from "./Components/ProductTable/ProductTable";
 import "./ManageProduct.css";
@@ -17,6 +22,7 @@ const ManageProduct = () => {
   const [productPath, setProductPath] = useState("");
   const [productStock, setProductStock] = useState("");
   const [categoryId, setCategoryId] = useState("");
+  const [productCategory, setProductCategory] = useState("");
 
   // Getting the list of products
   useEffect(() => {
@@ -36,8 +42,7 @@ const ManageProduct = () => {
     })();
   }, []);
 
-
-  function handleChange(name, value){
+  function handleChange(name, value) {
     switch (name) {
       case "productId":
         setProductId(value);
@@ -57,37 +62,37 @@ const ManageProduct = () => {
       case "categoryId":
         setCategoryId(value);
         break;
+      case "productCategory":
+        setProductCategory(value);
+        break;
       default:
         break;
-    }//end switch
+    } //end switch
   }
 
-  function handleSubmit(){
-    
-  }
+  const handleSubmit = () => {};
 
-  function handleDelete(id){
+  function handleDelete(id) {
     DeleteProduct(id).then((data) => {
-      console.log("Estado de eliminado: "+ data);
-      if(data === 1){
+      console.log("Estado de eliminado: " + data);
+      if (data === 1) {
         window.location.reload(false);
       }
     });
   }
 
-  function handleUpdate(){
+  function handleUpdate() {
     const producto = {
-      productId
-      , productName
-      , productPrice
-      , productPath
-      , productStock
-      , categoryId
+      productId,
+      productName,
+      productPrice,
+      productPath,
+      productStock,
+      categoryId,
     };
-    console.log(JSON.stringify(producto));
-    UpdateProduct(producto).then((data) =>{
+    UpdateProduct(producto).then((data) => {
       console.log(data);
-      if(data === 1){
+      if (data === 1) {
         window.location.reload(false);
       }
     });
@@ -109,6 +114,13 @@ const ManageProduct = () => {
             attribute={{
               products: products,
               categories: categories,
+              productId: productId,
+              productName: productName,
+              productPrice: productPrice,
+              productPath: productPath,
+              productStock: productStock,
+              categoryId: categoryId,
+              productCategory: productCategory
             }}
             handleChange={handleChange}
             handleDelete={handleDelete}

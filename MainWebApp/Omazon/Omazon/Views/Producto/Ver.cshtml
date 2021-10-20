@@ -1,0 +1,30 @@
+﻿
+
+
+<div class="row col-12">
+    <div class="col-6">
+        <img src="/Imagenes/prueba.jpg" class="img-fluid" alt="Imagen producto">
+    </div>
+    <div class="col-6 d-inline mb-2">
+        <p class="p-3 bg-light">
+            <a class="text-primary text-decoration-none">Nombre:</a>
+            <a class="mb-2 text-decoration-none text-dark">@ViewBag.nombre</a>
+            <a class="text-primary text-decoration-none">Descripción:</br></a>
+            <a class="mb-2 text-decoration-none text-dark"><?php echo $descripcion ?></br></a>
+            <a class="text-primary text-decoration-none">Disponibles en stock:</br></a>
+            <a class="mb-2 text-decoration-none text-dark"><?php echo $disponibles ?></br></a>
+            <a class="text-primary text-decoration-none">Calificación:</br></a>
+            <a class="mb-2 text-decoration-none text-dark"><?php echo $calificacion ?></br></a>
+        </p>
+        <h3 class="text-center text-success">Precio: US$<?php echo $precio ?></h3>
+
+        <form class="text-center mt-4" method="POST" >
+            <input type="text" name="id" value="<?php echo $vars[0]['ID_PRODUCTO'] ?>" hidden>
+            <label for="cantidad" class="form-label">Cantidad:</label>
+            <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" required="true">
+            <button type="submit" class="btn btn-primary p-1 m-2">Comprar</button>
+            <button type="button" onclick="agregarACarrito(); return false;" class="btn btn-info m-2">Agregar al carrito</button>
+        </form>
+
+    </div>
+</div>

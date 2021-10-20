@@ -6,47 +6,27 @@ import iconDelete from "../../../../assets/images/delete_white_36dp.svg";
 import iconEdit from "../../../../assets/images/edit_white_36dp.svg";
 import ProductModal from "../ProductModal/ProductModal";
 
-const ProductTable = ({ attribute, handleChange, handleUpdate , handleDelete }) => {
-  const [currentProductId, setProductId] = useState();
-  const [currentProductName, setProductName] = useState();
-  const [currentProductPrice, setProductPrice] = useState()
-  const [currentProductStock, setProductStock] = useState();
-  const [currentProductCategory, setProductCategory] = useState();
-  const [productIdCategory, setProductIdCategory] = useState();
-  const [currentProductImg, setProductImg] = useState();
+const ProductTable = ({
+  attribute,
+  handleChange,
+  handleUpdate,
+  handleDelete,
+}) => {
   const [show, setShow] = useState(false);
 
   // Handlers
   const handleClose = () => setShow(false);
 
-  /*const handleSubmit = (category) => {
-    // if (category) {
-    //   UpdateCategory(category).then((data) => {
-    //     setShow(false);
-    //     window.location.reload(false);
-    //   });
-    // }
-  };*/
-
   const handleShow = (product) => {
-    setProductId(product.productId);
-    setProductName(product.productName);
-    setProductPrice(product.productPrice);
-    setProductStock(product.productStock);
-    setProductCategory(product.productCategory);
-    setProductIdCategory(product.productIdCategory)
-    setProductImg(product.productImg);
-
     handleChange("productId", product.productId);
     handleChange("productName", product.productName);
     handleChange("productPrice", product.productPrice);
     handleChange("productPath", product.productImg);
     handleChange("productStock", product.productStock);
     handleChange("categoryId", product.productIdCategory);
-
+    handleChange("productCategory", product.productCategory);
     setShow(true);
   };
-
 
   return (
     <>
@@ -75,7 +55,7 @@ const ProductTable = ({ attribute, handleChange, handleUpdate , handleDelete }) 
                 <td className="d-flex justify-content-center">
                   <img
                     src={
-                      require("../../../../assets/images/" + "guzzi.png")//Cambiar al implementar la subida de imagen
+                      require("../../../../assets/images/guzzi.png")
                         .default
                     }
                     className="image__product"
@@ -118,14 +98,14 @@ const ProductTable = ({ attribute, handleChange, handleUpdate , handleDelete }) 
         handleUpdate={handleUpdate}
         attribute={{
           show: show,
-          categories: attribute.categories,          
-          currentProductId: currentProductId,
-          currentProductName: currentProductName,
-          currentProductPrice: currentProductPrice,
-          currentProductStock: currentProductStock,
-          currentProductCategory: currentProductCategory,
-          currentProductIdCategory: productIdCategory,
-          currentProductImg: currentProductImg,
+          categories: attribute.categories,
+          currentProductId: attribute.productId,
+          currentProductName: attribute.productName,
+          currentProductPrice: attribute.productPrice,
+          currentProductStock: attribute.productStock,
+          currentProductIdCategory: attribute.categoryId,
+          currentProductCategory: attribute.productCategory,
+          currentProductImg: attribute.productPath,
         }}
       />
     </>
