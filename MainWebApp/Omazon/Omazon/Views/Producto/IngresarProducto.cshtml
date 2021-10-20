@@ -1,6 +1,11 @@
-﻿@model Omazon.Models.ProductoModel
+﻿@{
+    @model Omazon.Models.ProductoModel
+    ViewData["Title"] = "Ingresar Producto";
 
-<div class="col col-md-3">
+}
+
+<div class="col-md-4 justify-content-center">
+    <h3>Registro de Productos</h3>
     <form asp-action="IngresarProducto">
         <div class="col-12">
             <label for="centrofor" class="form-label">Nombre Producto</label><br />
