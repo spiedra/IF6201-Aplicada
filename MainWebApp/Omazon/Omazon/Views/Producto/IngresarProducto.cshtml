@@ -1,0 +1,36 @@
+﻿@{
+    @model Omazon.Models.ProductoModel
+    ViewData["Title"] = "Ingresar Producto";
+
+}
+
+<div class="col-md-4 justify-content-center">
+    <h3>Registro de Productos</h3>
+    <form asp-action="IngresarProducto">
+        <div class="col-12">
+            <label for="centrofor" class="form-label">Nombre Producto</label><br />
+            <input type="text" id="producto" name="producto" required />
+        </div>
+        <div class="col-12">
+            <label for="centrofor" class="form-label">Precio</label><br />
+            <input type="number" id="precio" name="precio" required />
+        </div>
+        <div class="col-12">
+            <label for="centrofor" class="form-label">Stock</label><br />
+            <input type="number" id="stock" name="stock" required />
+        </div>
+        <div class="col-12">
+            <label for="centrofor" class="form-label">Imagen</label><br />
+            <input type="text" id="imagen" name="imagen" required />
+        </div>
+        <div class="col-12">
+            <label for="centrofor" class="form-label">Categoria</label><br />
+            <input type="text" id="categoria" name="categoria" required />
+        </div>
+        <br />
+        <div class="col-8 ">
+            <input type="submit" value="Registrar" class="btn btn-lg btn-primary btn-block" />
+        </div>
+
+    </form>
+</div>
