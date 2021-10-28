@@ -1,15 +1,28 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "uhxJLuOs4WNshSEe2q8kKIlCGS2n5tXIHgPBisKHvtgWI8fD0ozBmSaHLg+wl0k25UwWAn9195aJfljUw9aOHQ==",
+=======
+  "dgSpecHash": "3ptHeNNDLYxUQTa6VCGsrYNAnA7C5eQ3Y4YPRFwYotTjZ69RziBMy7p7j57Bnf++ET1Jlf9JGcM6hOBbK+h2lw==",
+>>>>>>> 39227f113bf3482ecb7cb097e99fcd70497b8920
   "success": true,
   "projectFilePath": "D:\\AplicadaPrincipal\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Raquel\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Raquel\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+<<<<<<< HEAD
     "C:\\Users\\Raquel\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\Raquel\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "C:\\Users\\Raquel\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
     "C:\\Users\\Raquel\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+=======
+    "C:\\Users\\Raquel\\.nuget\\packages\\npgsql\\5.0.10\\npgsql.5.0.10.nupkg.sha512",
+    "C:\\Users\\Raquel\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Raquel\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Raquel\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Raquel\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+    "C:\\Users\\Raquel\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+>>>>>>> 39227f113bf3482ecb7cb097e99fcd70497b8920
   ],
   "logs": []
 }
