@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Randm\\Desktop\\full aplicada\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj": {}
+    "D:\\AplicadaPrincipal\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Randm\\Desktop\\full aplicada\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj": {
+    "D:\\AplicadaPrincipal\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Randm\\Desktop\\full aplicada\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj",
+        "projectUniqueName": "D:\\AplicadaPrincipal\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj",
         "projectName": "OmazonWebAPI",
-        "projectPath": "C:\\Users\\Randm\\Desktop\\full aplicada\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj",
-        "packagesPath": "C:\\Users\\Randm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Randm\\Desktop\\full aplicada\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\obj\\",
+        "projectPath": "D:\\AplicadaPrincipal\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\OmazonWebAPI.csproj",
+        "packagesPath": "C:\\Users\\Raquel\\.nuget\\packages\\",
+        "outputPath": "D:\\AplicadaPrincipal\\IF6201-Aplicada\\MainWebAppAPI\\OmazonWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Randm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Raquel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.208\\RuntimeIdentifierGraph.json"
         }
       }
     }
