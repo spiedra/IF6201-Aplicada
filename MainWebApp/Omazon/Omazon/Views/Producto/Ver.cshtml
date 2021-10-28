@@ -3,23 +3,26 @@
 
 <div class="row col-12">
     <div class="col-6">
-        <img src="/Imagenes/prueba.jpg" class="img-fluid" alt="Imagen producto">
+        @{
+            string imagenRuta = "/Imagenes/" + ViewBag.Producto.NombreProducto + ".png";
+        }
+        <img src=@imagenRuta class="img-fluid" alt="Imagen producto">
     </div>
     <div class="col-6 d-inline mb-2">
         <p class="p-3 bg-light">
-            <a class="text-primary text-decoration-none">Nombre:</a>
-            <a class="mb-2 text-decoration-none text-dark">@ViewBag.nombre</a>
-            <a class="text-primary text-decoration-none">Descripción:</br></a>
-            <a class="mb-2 text-decoration-none text-dark"><?php echo $descripcion ?></br></a>
-            <a class="text-primary text-decoration-none">Disponibles en stock:</br></a>
-            <a class="mb-2 text-decoration-none text-dark"><?php echo $disponibles ?></br></a>
-            <a class="text-primary text-decoration-none">Calificación:</br></a>
-            <a class="mb-2 text-decoration-none text-dark"><?php echo $calificacion ?></br></a>
+            <a class="text-primary text-decoration-none">Nombre</br></a>
+            <a class="mb-2 text-decoration-none text-dark">@ViewBag.Producto.NombreProducto</br></a>
+            <a class="text-primary text-decoration-none">Descripción</br></a>
+            <a class="mb-2 text-decoration-none text-dark"></br></a>
+            <a class="text-primary text-decoration-none">Disponibles en stock</br></a>
+            <a class="mb-2 text-decoration-none text-dark">@ViewBag.Producto.Stock</br></a>
+            <a class="text-primary text-decoration-none">Calificación</br></a>
+            <a class="mb-2 text-decoration-none text-dark"></br></a>
         </p>
-        <h3 class="text-center text-success">Precio: US$<?php echo $precio ?></h3>
+        <h3 class="text-center text-success">Precio: @ViewBag.Producto.Precio US$</h3>
 
-        <form class="text-center mt-4" method="POST" >
-            <input type="text" name="id" value="<?php echo $vars[0]['ID_PRODUCTO'] ?>" hidden>
+        <form class="text-center mt-4" method="post" >
+            <input type="text" name="id" value="@ViewBag.Producto.IdProducto" hidden>
             <label for="cantidad" class="form-label">Cantidad:</label>
             <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" required="true">
             <button type="submit" class="btn btn-primary p-1 m-2">Comprar</button>

@@ -10,26 +10,35 @@
                     <th>Nombre</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
+                    <th>Sub Total</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody id="tbody">
-
-                @for (int i = 0; i < 12; i++)
+                @if (ViewBag.Carrito != null)
                 {
-                    <tr class="text-center">
-                        <td>Producto número @i</td>
-                        <td>2</td>
-                        <td>US$ 100</td>
-                        <td class="text-center"><button id="eliminar" type="button" class="btn btn-danger text-center" onclick="eliminarRow(this); eliminarDeCarrito(); return false;">x</button></td>
-                    </tr>
+                    List<ProductoModel> productos = ViewBag.Carrito.Productos;
+                    @foreach (ProductoModel producto in productos)
+                    {
+                        <tr class="text-center">
+                            <td>@producto.NombreProducto</td>
+                            <td>@producto.Cantidad</td>
+                            <td>@producto.Precio US$</td>
+                            <td>@producto.Precio US$ * @producto.Cantidad</td> <!--Necesario el subtotal desde la base de datos-->
+                            <td class="text-center"><button id="eliminar" type="button" class="btn btn-danger text-center" onclick="eliminarRow(this); eliminarDeCarrito(); return false;">x</button></td>
+                        </tr>
+                    }
                 }
             </tbody>
             <tfoot id="tfoot">
                 <tr>
                     <td></td>
+                    <td></td>
                     <td>Precio total:</td>
-                    <td id="precio">US$ 5000</td>
+                    @if (ViewBag.Carrito != null)
+                    {
+                        <td id="precio">@ViewBag.Carrito.SubTotal US$</td> <!--Necesario el sp para el total-->
+                    }
                     <td></td>
                 </tr>
             </tfoot>

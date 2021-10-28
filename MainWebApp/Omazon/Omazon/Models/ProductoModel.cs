@@ -7,6 +7,11 @@ namespace Omazon.Models
 {
     public class ProductoModel
     {
-        public string Nombre { get; set; }
+        public int IdProducto { get; set; }
+        public string NombreProducto { get; set; }
+        public int Stock { get; set; }
+        public string Precio { get; set; }
+        public int IdProveedor { get; set; }
+        public int Cantidad { get; set; }
     }
 }
