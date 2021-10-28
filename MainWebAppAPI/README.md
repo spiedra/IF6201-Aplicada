@@ -1,1 +1,0 @@
-# IF6201 - Informatica aplicada a los negocios
