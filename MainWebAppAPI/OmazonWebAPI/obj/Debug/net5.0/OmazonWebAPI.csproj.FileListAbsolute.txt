@@ -27,3 +27,12 @@ C:\Users\Randm\Desktop\full aplicada\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\
 C:\Users\Randm\Desktop\full aplicada\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\ref\OmazonWebAPI.dll
 C:\Users\Randm\Desktop\full aplicada\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.pdb
 C:\Users\Randm\Desktop\full aplicada\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.genruntimeconfig.cache
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.AssemblyInfoInputs.cache
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.AssemblyInfo.cs
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.csproj.CoreCompileInputs.cache
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.dll
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\ref\OmazonWebAPI.dll
+D:\AplicadaPrincipal\IF6201-Aplicada\MainWebAppAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.pdb
