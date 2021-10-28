@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using OmazonWebAPI.Connections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,12 @@ namespace OmazonWebAPI.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        public IConfiguration Configuration { get; }
+        public WeatherForecastController(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -26,6 +34,7 @@ namespace OmazonWebAPI.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            SqlServerConnection c = new(Configuration);
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
