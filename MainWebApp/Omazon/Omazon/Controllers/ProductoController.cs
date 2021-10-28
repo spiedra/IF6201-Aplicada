@@ -9,11 +9,13 @@ namespace Omazon.Controllers
 {
     public class ProductoController : Controller
     {
-        [HttpPost]
+        [HttpGet]
         public IActionResult Ver(ProductoModel producto)
         {
-            ViewBag.nombre = producto.Nombre;
+            ViewBag.Producto = producto;
             return View();
         }
+
+
     }
 }
