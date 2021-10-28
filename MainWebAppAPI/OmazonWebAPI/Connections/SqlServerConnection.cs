@@ -7,6 +7,6 @@ namespace OmazonWebAPI.Connections
 {
     public class SqlServerConnection
     {
-
+        //
     }
 }
