@@ -11,7 +11,7 @@ namespace Omazon.Models
         public int IdProducto { get; set; }
 
         [Required(ErrorMessage = "El nombre es requerido")]
-        public string Nombre { get; set; }
+        public string NombreProducto { get; set; }
 
         [Required(ErrorMessage = "La cantidad es requerida")]
         public int Stock { get; set; }
@@ -20,5 +20,7 @@ namespace Omazon.Models
         public string Precio { get; set; }
 
         public int IdProveedor { get; set; }
+      
+        public int Cantidad { get; set; }
     }
 }
