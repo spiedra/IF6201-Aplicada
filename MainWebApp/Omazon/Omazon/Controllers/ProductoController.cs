@@ -9,6 +9,11 @@ namespace Omazon.Controllers
 {
     public class ProductoController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Ver(ProductoModel producto)
         {

@@ -98,6 +98,27 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+.btn__search,
+.btn__refresh, .btn__add {
+    background-color: rgba(204, 204, 204, 0.959) !important;
+}
+
+    .btn__search:hover {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .btn__refresh:hover {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .btn__add:hover {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5) !important;
+    }
+
+.menu__card {
+    border-radius: 1em !important;
+}
+
 @media (min-width: 575.98px) and (max-width: 991.98px) {
     .form__login {
         width: 70%;
