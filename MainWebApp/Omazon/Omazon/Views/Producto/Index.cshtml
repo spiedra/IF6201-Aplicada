@@ -1,0 +1,240 @@
+﻿@model ProductoModel
+@{
+    ViewData["Title"] = "Gestor de productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mt-4 mb-2">
+    <h1 class="promo-table__title d-inline me-3">Gestor de productos</h1>
+    <button class="btn mb-3 d-inline btn__add"
+            data-bs-toggle="modal"
+            data-bs-target="#addModal"
+            data-bs-placement="right"
+            title="Agregar producto"
+            onclick="">
+        <img src="~/Imagenes/add_black_24dp.svg" alt="Icono de agregar" />
+    </button>
+    <button class="btn mb-3 d-inline btn__search"
+            data-bs-toggle="modal"
+            data-bs-target="#searchModal"
+            data-bs-placement="right"
+            title="Busqueda de productos"
+            onclick="">
+        <img src="~/Imagenes/search_black_24dp.svg" alt="Icono de busqueda" />
+    </button>
+    <button class="btn mb-3 d-inline btn__refresh"
+            title="Refrescar tabla" onclick="">
+        <img src="~/Imagenes/refresh_black_24dp.svg" alt="Icono de busqueda" />
+    </button>
+</div>
+<hr />
+<div>
+    <div class="row table-responsive">
+        <div class="col-12">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyUser">
+                    <tr>
+                        <td>1</td>
+                        <td>Nombre de producto</td>
+                        <td>44</td>
+                        <td>100000</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
+                                Modificar
+                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
+                            </button>
+                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
+                                Eliminar
+                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Nombre de producto</td>
+                        <td>44</td>
+                        <td>100000</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
+                                Modificar
+                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
+                            </button>
+                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
+                                Eliminar
+                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Nombre de producto</td>
+                        <td>44</td>
+                        <td>100000</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
+                                Modificar
+                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
+                            </button>
+                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
+                                Eliminar
+                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Nombre de producto</td>
+                        <td>44</td>
+                        <td>100000</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
+                                Modificar
+                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
+                            </button>
+                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
+                                Eliminar
+                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Nombre de producto</td>
+                        <td>44</td>
+                        <td>100000</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
+                                Modificar
+                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
+                            </button>
+                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
+                                Eliminar
+                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Busqueda de productos</h5>
+            </div>
+            <form class="was-validated" method="get" asp-controller="" asp-action="">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Nombre de producto</label>
+                            <input id="" class="form-control is-invalid" type="text" placeholder="Ingrese el nombre del producto" asp-for="Nombre" required>
+                            <span class="field-validation-error" asp-validation-for="Nombre"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="btn-search" type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modificar información del producto</h5>
+            </div>
+            <form id="formEditProductModal" class="row g-3 p-3 was-validated" method="post" asp-controller="" asp-action="">
+                <input id="inputIdProduct" class="form-control is-invalid" type="hidden" asp-for="IdProducto" />
+                <div class="col-md-12">
+                    <label for="inputName" class="form-label">Nombre</label>
+                    <input id="inputName" class="form-control is-invalid" type="text" asp-for="Nombre" required>
+                    <span class="field-validation-error" asp-validation-for="Nombre"></span>
+                </div>
+                <div class="col-md-12">
+                    <label for="inputStock" class="form-label">Cantidad</label>
+                    <input id="inputStock" class="form-control is-invalid" type="text" asp-for="Stock" required>
+                    <span class="field-validation-error" asp-validation-for="Stock"></span>
+                </div>
+                <div class="col-md-12">
+                    <label for="inputPrice" class="form-label">Precio</label>
+                    <input id="inputPrice" class="form-control is-invalid" type="number" asp-for="Precio" required>
+                    <span class="field-validation-error" asp-validation-for="Precio"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="btnEdit" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registrar un nuevo producto</h5>
+            </div>
+            <form id="formAddProductModal" class="row g-3 p-3 was-validated" method="post" asp-controller="" asp-action="">
+                <input id="inputIdProducto" class="form-control is-invalid" type="hidden" asp-for="IdProducto" />
+                <div class="col-md-12">
+                    <label for="inputName" class="form-label">Nombre</label>
+                    <input id="inputName" class="form-control is-invalid" type="text" placeholder="Ingrese el nombre" asp-for="Nombre" required>
+                    <span class="field-validation-error" asp-validation-for="Nombre"></span>
+                </div>
+                <div class="col-md-12">
+                    <label for="inputStock" class="form-label">Cantidad</label>
+                    <input id="inputStock" class="form-control is-invalid" type="number" placeholder="Ingrese la cantidad" asp-for="Stock" required>
+                    <span class="field-validation-error" asp-validation-for="Stock"></span>
+                </div>
+                <div class="col-md-12">
+                    <label for="inputPrice" class="form-label">Precio</label>
+                    <input id="inputPrice" class="form-control is-invalid" type="number" placeholder="Ingrese el precio" asp-for="Precio" required>
+                    <span class="field-validation-error" asp-validation-for="Precio"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="btnEdit" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Está seguro de eliminar este producto?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formDeleteProductModal" method="post" asp-controller="User" asp-action="Delete">
+                <div id="msgContainerDeleteModal" class="modal-body">
+                    <p>El producto se eliminara permanentemente del sistema</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Confirmar eliminación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/js/product.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
