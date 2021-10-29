@@ -60,6 +60,25 @@ button.accept-policy {
   line-height: inherit;
 }
 
+.form__login {
+    width: 95%;
+    background-color: #6dc7f6;
+    border-radius: 1em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.container__index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 90vh;
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -77,4 +96,16 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+@media (min-width: 575.98px) and (max-width: 991.98px) {
+    .form__login {
+        width: 70%;
+    }
+}
+
+@media (min-width: 991.98px) {
+    .form__login {
+        max-width: 40em;
+    }
 }
