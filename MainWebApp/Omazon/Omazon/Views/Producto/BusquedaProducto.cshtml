@@ -1,24 +1,15 @@
-﻿@{
+﻿@{ 
     @model Omazon.Models.ProductoModel
-    ViewData["Title"] = "Home Page";
-
 }
-<div class="m-1 bg-dark text-light rounded">
-    <h1 class="text-center">Omazon.com</h1>
-    <h4 class="p-2">Inicio</h4>
+<div class="m-1 p-2 bg-dark text-light rounded">
+    <h1 class="text-center">Resultados para: </h1>
+    <h2 class="text-info text-center">@ViewBag.ValorBusqueda</h2>
 </div>
-<form class="m-1" method="get" asp-controller="Producto" asp-action="BusquedaProducto">
-    <div class="input-group">
-        <span class="input-group-text">Nombre</span>
-        <input type="text" class="form-control" asp-for="@Model.NombreProducto" placeholder="">
-        <button class="btn btn-outline-secondary bg-primary text-white" type="submit">Buscar</button>
-    </div>
 
-</form>
 <div class="row m-1">
     @foreach (ProductoModel producto in ViewBag.Productos)
     {
-        string imagenRuta = "/Imagenes/" + @producto.NombreProducto + ".png"; <!--Cambiar por el path de la base de datos-->
+        string imagenRuta = "/Imagenes/" + @producto.NombreProducto + ".png";<!--Cambiar por el path de la base de datos-->
         <form method="get" asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
 
             <div class="card">
