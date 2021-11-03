@@ -18,7 +18,7 @@
 <div class="row m-1">
     @foreach (ProductoModel producto in ViewBag.Productos)
     {
-        string imagenRuta = "/Imagenes/" + @producto.NombreProducto + ".png"; <!--Cambiar por el path de la base de datos-->
+        string imagenRuta = "/Imagenes/" + @producto.RutaImagen; 
         <form method="get" asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
 
             <div class="card">
@@ -32,6 +32,7 @@
                     <input type="hidden" asp-for="@Model.NombreProducto" value="@producto.NombreProducto" />
                     <input type="hidden" asp-for="@Model.Stock" value="@producto.Stock" />
                     <input type="hidden" asp-for="@Model.Precio" value="@producto.Precio" />
+                    <input type="hidden" asp-for="@Model.RutaImagen" value="@producto.RutaImagen" />
                     <button type="submit" class="btn btn-primary">Ver</button>
                     <button type="button" id="btnCarrito" onclick="agregarFavorito(); return false;" class="btn btn-secondary">Agregar al carrito</button>
                 </div>

@@ -22,5 +22,8 @@ namespace Omazon.Models
         public int IdProveedor { get; set; }
       
         public int Cantidad { get; set; }
+
+        public string RutaImagen { get; set; }
+        public string NombreCategoria { get; set; }
     }
 }

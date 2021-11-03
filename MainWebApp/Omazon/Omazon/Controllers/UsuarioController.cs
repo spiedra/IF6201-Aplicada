@@ -51,8 +51,9 @@ namespace Omazon.Controllers
 
                     producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
                     producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
-                    producto.Precio = respuestaReader["PRECIO"].ToString();
                     producto.Cantidad = Int32.Parse(respuestaReader["CANTIDAD"].ToString());
+                    producto.Precio = respuestaReader["PRECIO"].ToString();
+                    producto.Cantidad = Int32.Parse(respuestaReader["SUB_TOTAL"].ToString());
 
                     carrito.Productos.Add(producto);
 

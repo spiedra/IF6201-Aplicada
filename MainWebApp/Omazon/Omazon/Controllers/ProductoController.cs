@@ -37,7 +37,7 @@ namespace Omazon.Controllers
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
 
-            string sqlQuery = $"exec PRODUCTO.sp_SELECT_PRODUCTOS";
+            string sqlQuery = $"exec [OMAZON].[sp_BUSCAR_PRODUCTO_NOMBRE] '{productoBusqueda.NombreProducto}'";
             using (SqlCommand command = new SqlCommand(sqlQuery, connection))
             {
                 command.CommandType = CommandType.Text;
@@ -53,7 +53,8 @@ namespace Omazon.Controllers
                     producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
                     producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
                     producto.Precio = respuestaReader["PRECIO"].ToString();
-                    producto.IdProveedor = Int32.Parse(respuestaReader["ID_PROVEEDOR"].ToString());
+                    producto.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
+                    producto.RutaImagen = respuestaReader["RUTA_IMAGEN"].ToString();
 
                     productos.Add(producto);
 
