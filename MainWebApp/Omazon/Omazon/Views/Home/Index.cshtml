@@ -18,25 +18,24 @@
 <div class="row m-1">
     @foreach (ProductoModel producto in ViewBag.Productos)
     {
-        string imagenRuta = "/Imagenes/" + @producto.NombreProducto + ".png"; <!--Cambiar por el path de la base de datos-->
-        <form method="get" asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
-
-            <div class="card">
-                <img src=@imagenRuta class="card-img-top" alt="foto-producto-de-limpieza" height="250">
-                <div class="card-body">
-                    <h5 class="card-title">@producto.NombreProducto</h5>
-                    <h3> Precio : @producto.Precio US$</h3>
-                </div>
-                <div class="card-footer">
-                    <input type="hidden" asp-for="@Model.IdProducto" value="@producto.IdProducto" />
-                    <input type="hidden" asp-for="@Model.NombreProducto" value="@producto.NombreProducto" />
-                    <input type="hidden" asp-for="@Model.Stock" value="@producto.Stock" />
-                    <input type="hidden" asp-for="@Model.Precio" value="@producto.Precio" />
-                    <button type="submit" class="btn btn-primary">Ver</button>
-                    <button type="button" id="btnCarrito" onclick="agregarFavorito(); return false;" class="btn btn-secondary">Agregar al carrito</button>
-                </div>
+        <!--string imagenRuta = "/Imagenes/" + @producto.RutaImagen + ".png";--> <!--Cambiar por el path de la base de datos-->
+    <form method="get" asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
+        <div class="card">
+            <img src="~/Imagenes/@producto.RutaImagen" class="card-img-top" alt="Imagen de @producto.NombreProducto" height="250">
+            <div class="card-body">
+                <h5 class="card-title">@producto.NombreProducto</h5>
+                <h3> Precio : @producto.Precio US$</h3>
             </div>
+            <div class="card-footer">
+                <input type="hidden" asp-for="@Model.IdProducto" value="@producto.IdProducto" />
+                <input type="hidden" asp-for="@Model.NombreProducto" value="@producto.NombreProducto" />
+                <input type="hidden" asp-for="@Model.Stock" value="@producto.Stock" />
+                <input type="hidden" asp-for="@Model.Precio" value="@producto.Precio" />
+                <button type="submit" class="btn btn-primary">Ver</button>
+                <button type="button" id="btnCarrito" onclick="agregarFavorito(); return false;" class="btn btn-secondary">Agregar al carrito</button>
+            </div>
+        </div>
 
-        </form>
+    </form>
     }
 </div>
