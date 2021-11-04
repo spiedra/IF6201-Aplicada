@@ -30,7 +30,7 @@ namespace Omazon.Controllers
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
 
-            string sqlQuery = $"exec [USUARIO].[sp_SELECT_CARRITO] '{2}'"; //Aquí va como parametro el ID de usuario
+            string sqlQuery = $"exec [USUARIO].[sp_SELECT_CARRITO] '{2}'"; //HttpContext.User.Identity.Name -> para recuperar el nombre del usuario
             using (SqlCommand command = new SqlCommand(sqlQuery, connection))
             {
                 command.CommandType = CommandType.Text;
