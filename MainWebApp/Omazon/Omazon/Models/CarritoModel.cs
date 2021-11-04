@@ -9,6 +9,6 @@ namespace Omazon.Models
     {
         public int IdCarritoCompras { get; set; }
         public List<ProductoModel> Productos { get; set; }
-        public string SubTotal { get; set; }
+        public int PrecioTotal { get; set; }
     }
 }

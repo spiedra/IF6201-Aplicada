@@ -17,16 +17,20 @@
                 <div class="card-body">
                     <h5 class="card-title">@producto.NombreProducto</h5>
                     <h3> Precio : @producto.Precio US$</h3>
+                    <div class="row d-flex">
+                        <input type="number" id="cantidad" class="form-control-sm col-4 m-auto" value="1" />
+                        <button type="button" id="btnCarrito" onclick="agregarACarrito(); return false;" class="btn btn-info text-white col-7 m-auto">Agregar al carrito</button>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <input type="hidden" asp-for="@Model.IdProducto" value="@producto.IdProducto" />
+                <div class="card-footer row d-flex justify-content-end m-0">
+                    <input type="hidden" id="idProducto" asp-for="@Model.IdProducto" value="@producto.IdProducto" />
                     <input type="hidden" asp-for="@Model.NombreProducto" value="@producto.NombreProducto" />
                     <input type="hidden" asp-for="@Model.Stock" value="@producto.Stock" />
-                    <input type="hidden" asp-for="@Model.Precio" value="@producto.Precio" />
-                    <input type="hidden" asp-for="@Model.RutaImagen" value="@producto.RutaImagen" />
+                    <input type="hidden" id="precio" asp-for="@Model.Precio" value="@producto.Precio" />
+                    <input type="hidden" asp-for="@Model.NombreProveedor" value="@producto.NombreProveedor" />
                     <input type="hidden" asp-for="@Model.NombreCategoria" value="@producto.NombreCategoria" />
-                    <button type="submit" class="btn btn-primary">Ver</button>
-                    <button type="button" id="btnCarrito" onclick="agregarACarrito(); return false;" class="btn btn-secondary">Agregar al carrito</button>
+                    <input type="hidden" asp-for="@Model.RutaImagen" value="@producto.RutaImagen" />
+                    <button type="submit" class="btn btn-primary col-4">Ver</button>
                 </div>
             </div>
 

@@ -30,7 +30,7 @@ namespace Omazon.Controllers
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
 
-            string sqlQuery = $"exec USUARIO.sp_SELECT_CARRITO '{1}'"; //Aquí va como parametro el ID de usuario
+            string sqlQuery = $"exec [USUARIO].[sp_SELECT_CARRITO] '{2}'"; //Aquí va como parametro el ID de usuario
             using (SqlCommand command = new SqlCommand(sqlQuery, connection))
             {
                 command.CommandType = CommandType.Text;
@@ -41,19 +41,23 @@ namespace Omazon.Controllers
                     return View();
                 
                 CarritoModel carrito = new CarritoModel();
-                
-                carrito.IdCarritoCompras = Int32.Parse(respuestaReader["ID_CARRITO_COMPRAS"].ToString());
-                carrito.SubTotal = respuestaReader["ID_CARRITO_COMPRAS"].ToString();
+                carrito.Productos = new List<ProductoModel>();
+
+                carrito.PrecioTotal = 0;
 
                 while (respuestaReader.Read())
                 {
                     ProductoModel producto = new ProductoModel();
 
+                    carrito.IdCarritoCompras = Int32.Parse(respuestaReader["ID_CARRITO_COMPRAS"].ToString());
+                    producto.SubTotal = Int32.Parse(respuestaReader["SUB_TOTAL"].ToString());
+
                     producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
                     producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
                     producto.Cantidad = Int32.Parse(respuestaReader["CANTIDAD"].ToString());
                     producto.Precio = respuestaReader["PRECIO"].ToString();
-                    producto.Cantidad = Int32.Parse(respuestaReader["SUB_TOTAL"].ToString());
+
+                    carrito.PrecioTotal += producto.SubTotal;
 
                     carrito.Productos.Add(producto);
 
@@ -62,6 +66,31 @@ namespace Omazon.Controllers
                 ViewBag.Carrito = carrito;
             }
             return View();
+        }
+
+        public string AgregarProductoACarrito(int idProducto, int cantidad, int precio)
+        {
+            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            var connection = new SqlConnection(connectionString);
+            int subTotal = precio * cantidad;
+            string sqlQuery = $"exec [OMAZON].[sp_INSERTAR_PRODUCTO_CARRITO] '{2}'," + //cambiar al id cuando esté el session
+                $"'{idProducto}', '{cantidad}', '{subTotal}'";
+            string respuesta = "Error";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            {
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader respuestaReader = command.ExecuteReader();
+
+
+                List<ProductoModel> productos = new List<ProductoModel>();
+                if (respuestaReader.Read())
+                {
+                    respuesta = respuestaReader["RESPUESTA"].ToString();
+                }
+                connection.Close();
+            }
+            return respuesta;
         }
     }
 }
