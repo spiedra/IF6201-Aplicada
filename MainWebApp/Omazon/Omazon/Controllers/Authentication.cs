@@ -1,87 +1,81 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Omazon.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Omazon.Controllers
 {
     public class Authentication : Controller
     {
-        // GET: Login
+        public IConfiguration Configuration { get; }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Login/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Login/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Login/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> UserAuthentication(UserViewModel userViewModel)
         {
-            try
+            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            var connection = new SqlConnection(connectionString);
+            string sqlQuery = $"exec [OMAZON].[sp_AUTENTICACION] '{userViewModel.UserName}', '{userViewModel.Password}'";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader action = command.ExecuteReader();
+
+                switch (action.GetString(0))
+                {
+                    case "1":
+                        await CreateUserSession(userViewModel.UserName, "Administrador");
+                        connection.Close();
+                        return Redirect("~/Home/Index");
+                    case "2":
+                        await CreateUserSession(userViewModel.UserName, "Cliente");
+                        connection.Close();
+                        return Redirect("~/Home/Client/Index");
+                    default:
+                        return View("Index");
+                }
             }
         }
 
-        // GET: Login/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<bool> CreateUserSession(string NombreUsuario, string Role)
         {
-            return View();
-        }
+            List<Claim> claims;
+            AuthenticationProperties authProperties;
+            ClaimsIdentity claimsIdentity;
 
-        // POST: Login/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
+            claims = new List<Claim>
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+                 new Claim(ClaimTypes.Name,NombreUsuario ),
+                 new Claim(ClaimTypes.Role, Role),
+             };
+            claimsIdentity = new ClaimsIdentity(
+            claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            authProperties = new AuthenticationProperties
             {
-                return View();
-            }
-        }
+                AllowRefresh = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                IsPersistent = true,
+            };
 
-        // GET: Login/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+            await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
 
-        // POST: Login/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return true;
         }
     }
 }
