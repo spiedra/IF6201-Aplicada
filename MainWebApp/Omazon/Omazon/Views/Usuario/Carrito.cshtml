@@ -37,7 +37,8 @@
                     <td>Precio total:</td>
                     @if (ViewBag.Carrito != null)
                     {
-                        <td id="precio">@ViewBag.Carrito.SubTotal US$</td> <!--Necesario el sp para el total-->
+                        <td id="precio">@ViewBag.Carrito.SubTotal US$</td>
+ <!--Necesario el sp para el total-->
                     }
                     <td></td>
                 </tr>
@@ -45,6 +46,68 @@
         </table>
     </div>
     <div id="button" class="text-center">
-        <button type="submit" class="mb-4 btn btn-primary">Comprar</button>
+        <button type="button" class="mb-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#checkOutModal">Comprar</button>
     </div>
 </form>
+
+
+<div class="modal fade" id="checkOutModal" tabindex="-1" aria-labelledby="checkOutModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Payment Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 order-md-1">
+                        <form method="POST" action="?controller=Customer&action=purchaseProducts">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">First name</label>
+                                    <input type="text" class="form-control" required="">
+                                    <div class="invalid-feedback"> Valid first name is required. </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" class="form-control" required>
+                                    <div class="invalid-feedback"> Valid last name is required. </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                                <input type="email" class="form-control" placeholder="you@example.com">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-name">Name on card</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-number">Credit card number</label>
+                                    <input type="text" class="form-control" placeholder="0000-0000-0000-0000" required>
+                                    <div class="invalid-feedback"> Credit card number is required </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-expiration">Expiration</label>
+                                    <input type="text" class="form-control" placeholder="mm/yy" required>
+                                    <div class="invalid-feedback"> Expiration date required </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-cvv">CVV</label>
+                                    <input type="text" class="form-control" placeholder="123" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer p-0 pt-3">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button id="btn_confirm-purchase" type="button" data-bs-dismiss="modal" class="btn btn-primary btn-block">Confirm purchase</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

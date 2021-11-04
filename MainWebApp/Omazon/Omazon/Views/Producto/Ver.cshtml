@@ -3,10 +3,10 @@
 
 <div class="row col-12">
     <div class="col-6">
-        @{
+        @*@{
             string imagenRuta = "/Imagenes/" + ViewBag.Producto.NombreProducto + ".png";
-        }
-        <img src=@imagenRuta class="img-fluid" alt="Imagen producto">
+        }*@
+        <img src="~/Imagenes/@ViewBag.Producto.RutaImagen" class="img-fluid" alt="Imagen de @ViewBag.Producto.NombreProducto">
     </div>
     <div class="col-6 d-inline mb-2">
         <p class="p-3 bg-light">

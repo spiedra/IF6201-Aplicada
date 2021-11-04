@@ -44,7 +44,8 @@ namespace Omazon.Controllers
                     producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
                     producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
                     producto.Precio = respuestaReader["PRECIO"].ToString();
-                    producto.IdProveedor = Int32.Parse(respuestaReader["ID_PROVEEDOR"].ToString());
+                    //producto.IdProveedor = Int32.Parse(respuestaReader["ID_PROVEEDOR"].ToString());
+                    producto.IdProveedor = 1;
                     producto.RutaImagen = respuestaReader["RUTA_IMAGEN"].ToString();
 
                     productos.Add(producto);
