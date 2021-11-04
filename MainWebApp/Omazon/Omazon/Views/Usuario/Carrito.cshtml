@@ -24,7 +24,7 @@
                             <td>@producto.NombreProducto</td>
                             <td>@producto.Cantidad</td>
                             <td>@producto.Precio US$</td>
-                            <td>@producto.Precio US$ * @producto.Cantidad</td> <!--Necesario el subtotal desde la base de datos-->
+                            <td>@producto.SubTotal</td>
                             <td class="text-center"><button id="eliminar" type="button" class="btn btn-danger text-center" onclick="eliminarRow(this); eliminarDeCarrito(); return false;">x</button></td>
                         </tr>
                     }
@@ -37,7 +37,7 @@
                     <td>Precio total:</td>
                     @if (ViewBag.Carrito != null)
                     {
-                        <td id="precio">@ViewBag.Carrito.SubTotal US$</td> <!--Necesario el sp para el total-->
+                        <td id="precio">@ViewBag.Carrito.PrecioTotal US$</td>
                     }
                     <td></td>
                 </tr>
