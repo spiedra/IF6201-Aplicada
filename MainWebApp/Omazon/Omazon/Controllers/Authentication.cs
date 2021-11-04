@@ -1,87 +1,120 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Omazon.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Omazon.Controllers
 {
     public class Authentication : Controller
     {
-        // GET: Login
+        public IConfiguration Configuration { get; }
+
+        public Authentication(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Login/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Login/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Login/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [AllowAnonymous]
+        public async Task<ActionResult> UserAuthentication(UserViewModel userViewModel)
         {
-            try
+            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            var connection = new SqlConnection(connectionString);
+            string sqlQuery = $"exec [OMAZON].[sp_AUTENTICACACION] '{userViewModel.UserName}', '{userViewModel.Password}'";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader response = command.ExecuteReader();
+
+                if (response.Read())
+                {
+                    switch (response["RESPONSE"].ToString())
+                    {
+                        case "1":
+                            await CreateUserSession(userViewModel.UserName, response["TIPO_ROLE"].ToString());
+                            connection.Close();
+                            return Redirect("~/Admin/Index");
+                        case "2":
+                            await CreateUserSession(userViewModel.UserName, response["TIPO_ROLE"].ToString());
+                            connection.Close();
+                            return Redirect("~/Home/Index");
+                        default:
+                            connection.Close();
+                            return Redirect("Index");
+                    }
+                }
+                return Redirect("Index");
             }
         }
 
-        // GET: Login/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<bool> CreateUserSession(string NombreUsuario, string Role)
         {
-            return View();
+
+            List<Claim> claims;
+            AuthenticationProperties authProperties;
+            ClaimsIdentity claimsIdentity;
+
+            claims = new List<Claim>
+            {
+                 new Claim(ClaimTypes.Name,NombreUsuario ),
+                 new Claim(ClaimTypes.Role, Role),
+             };
+
+            //uso de cookies para la sesion
+
+            claimsIdentity = new ClaimsIdentity(
+            claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            //propiedades de la sesion
+
+            authProperties = new AuthenticationProperties
+            {
+                AllowRefresh = true,
+                // Refreshing the authentication session should be allowed.
+
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                // The time at which the authentication ticket expires.
+
+                IsPersistent = true,
+                // Whether the authentication session is persisted across 
+                // multiple requests. When used with cookies, controls
+                // whether the cookie's lifetime is absolute (matching the
+                // lifetime of the authentication ticket) or session-based.
+
+                //IssuedUtc = <DateTimeOffset>,
+                // The time at which the authentication ticket was issued.
+
+                //RedirectUri = <string>
+                // The full path or absolute URI to be used as an http 
+                // redirect response value.
+            };
+
+            //informe al contexto (todo el sistema) que hay un nuevo usuario
+            await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
+
+            return true;
         }
 
-        // POST: Login/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Login/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Login/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

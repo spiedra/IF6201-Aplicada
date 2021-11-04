@@ -26,7 +26,7 @@
                                 <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Carrito">Carrito</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light me-1" asp-controller="Authentication" asp-action="Index">Iniciar Sesión<img src="~/Imagenes/person_white_24dp.svg" alt="Sign-in icon"/></a>
+                                <a class="nav-link text-light me-1" asp-controller="Authentication" asp-action="Index">@this.Context.User.Identity.Name<img src="~/Imagenes/person_white_24dp.svg" alt="Sign-in icon" /></a>
                             </li>
                         </ul>
                     </div>
