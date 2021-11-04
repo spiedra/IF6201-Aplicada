@@ -33,3 +33,38 @@ C:\Users\Randm\Desktop\full aplicada\IF6201-Aplicada\MainWebAPI\OmazonWebAPI\bin
 C:\Users\Randm\Desktop\full aplicada\IF6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
 C:\Users\Randm\Desktop\full aplicada\IF6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Randm\Desktop\full aplicada\IF6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\appsettings.Development.json
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\appsettings.json
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\OmazonWebAPI.exe
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\OmazonWebAPI.deps.json
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\OmazonWebAPI.runtimeconfig.json
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\OmazonWebAPI.runtimeconfig.dev.json
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\OmazonWebAPI.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\ref\OmazonWebAPI.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\OmazonWebAPI.pdb
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\Microsoft.OpenApi.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\System.Data.SqlClient.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.csprojAssemblyReference.cache
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.AssemblyInfoInputs.cache
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.AssemblyInfo.cs
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.csproj.CoreCompileInputs.cache
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\staticwebassets\OmazonWebAPI.StaticWebAssets.Manifest.cache
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\staticwebassets\OmazonWebAPI.StaticWebAssets.xml
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\scopedcss\bundle\OmazonWebAPI.styles.css
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.RazorTargetAssemblyInfo.cache
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.csproj.CopyComplete
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\ref\OmazonWebAPI.dll
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.pdb
+D:\SEGUNDO SEMESTRE 2021\INFORMATICA APLICADA A LOS NEGOCIOS\Asignaciones\Proyectos\IF-6201-Aplicada\MainWebAPI\OmazonWebAPI\obj\Debug\net5.0\OmazonWebAPI.genruntimeconfig.cache
