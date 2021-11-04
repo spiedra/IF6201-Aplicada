@@ -19,10 +19,15 @@ namespace Omazon.Models
         [Required(ErrorMessage = "El precio es requerido")]
         public string Precio { get; set; }
 
-        public string RutaImagen { get; set; }
-
         public int IdProveedor { get; set; }
+
+        public string NombreProveedor { get; set; }
       
         public int Cantidad { get; set; }
+
+        public string RutaImagen { get; set; }
+        public string NombreCategoria { get; set; }
+
+        public int SubTotal { get; set; }
     }
 }

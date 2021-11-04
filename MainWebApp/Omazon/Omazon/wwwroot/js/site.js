@@ -1,4 +1,29 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function agregarACarrito() {
+    var idProducto = $('#idProducto').val();
+    var cantidad = $('#cantidad').val();
+    var precio = $('#precio').val();
 
-// Write your JavaScript code.
+    var parametros = {
+        "idProducto": idProducto
+        , "cantidad": cantidad
+        , "precio": precio
+    };
+    $('#respuesta').empty();
+    $.ajax({
+        data: parametros,
+        url: '/Usuario/AgregarProductoACarrito',
+        type: 'post',
+        beforeSend: function () {
+            //$('#respuesta').text('Agregando...');
+        },
+        success: function (response) {
+            
+            alert(response);
+        },
+        error: function () {
+            alert(response);
+            //$('#respuesta').val("Error de conexión con el servidor");
+        }
+    });
+
+}

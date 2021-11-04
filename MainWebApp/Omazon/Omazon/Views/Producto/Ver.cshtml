@@ -1,32 +1,33 @@
 ﻿
 
 
-<div class="row col-12">
+<div class="row">
     <div class="col-6">
-        @*@{
-            string imagenRuta = "/Imagenes/" + ViewBag.Producto.NombreProducto + ".png";
-        }*@
-        <img src="~/Imagenes/@ViewBag.Producto.RutaImagen" class="img-fluid" alt="Imagen de @ViewBag.Producto.NombreProducto">
+        @{
+            string imagenRuta = "/Imagenes/" + ViewBag.Producto.RutaImagen;
+        }
+        <img src=@imagenRuta class="img-fluid" alt="Imagen producto">
     </div>
     <div class="col-6 d-inline mb-2">
         <p class="p-3 bg-light">
-            <a class="text-primary text-decoration-none">Nombre</br></a>
-            <a class="mb-2 text-decoration-none text-dark">@ViewBag.Producto.NombreProducto</br></a>
-            <a class="text-primary text-decoration-none">Descripción</br></a>
-            <a class="mb-2 text-decoration-none text-dark"></br></a>
-            <a class="text-primary text-decoration-none">Disponibles en stock</br></a>
-            <a class="mb-2 text-decoration-none text-dark">@ViewBag.Producto.Stock</br></a>
-            <a class="text-primary text-decoration-none">Calificación</br></a>
-            <a class="mb-2 text-decoration-none text-dark"></br></a>
+            <a class="text-primary text-decoration-none">Nombre<br /></a>
+            <a class="mb-2 text-decoration-none text-dark">@ViewBag.Producto.NombreProducto <br /></a>
+            <a class="text-primary text-decoration-none">Categoria<br /></a>
+            <a class="mb-2 text-decoration-none text-dark">@ViewBag.Producto.NombreCategoria<br /></a>
+            <a class="text-primary text-decoration-none">Disponibles en stock<br /></a>
+            <a class="mb-2 text-decoration-none text-dark">@ViewBag.Producto.Stock<br /></a>
+            <a class="text-primary text-decoration-none">Proveedor<br /></a>
+            <a class="mb-2 text-decoration-none text-dark">@ViewBag.Producto.NombreProveedor<br /></a>
         </p>
         <h3 class="text-center text-success">Precio: @ViewBag.Producto.Precio US$</h3>
 
-        <form class="text-center mt-4" method="post" >
-            <input type="text" name="id" value="@ViewBag.Producto.IdProducto" hidden>
+        <form class="text-center mt-4" method="post">
+            <input type="text" id="idProducto" value="@ViewBag.Producto.IdProducto" hidden>
+            <input type="text" id="precio" value="@ViewBag.Producto.Precio" hidden>
             <label for="cantidad" class="form-label">Cantidad:</label>
-            <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" required="true">
-            <button type="submit" class="btn btn-primary p-1 m-2">Comprar</button>
-            <button type="button" onclick="agregarACarrito(); return false;" class="btn btn-info m-2">Agregar al carrito</button>
+            <input type="number" class="form-control" id="cantidad" value="1" required>
+            <button type="button" onclick="agregarACarrito(); return false;" class="btn btn-info text-light m-1">Agregar al carrito</button>
+            <button type="submit" class="btn btn-primary m-1">Comprar</button>
         </form>
 
     </div>
