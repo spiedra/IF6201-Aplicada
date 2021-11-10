@@ -1,0 +1,59 @@
+﻿@model OmazonP10.Models.ProveedorModel
+
+@{
+    ViewData["Title"] = "Prueba";
+
+}
+
+
+<div class="table-responsive">
+    <table class="table" id="table">
+        <tr>
+            <th>Nombre</th>
+            <th>Eliminar</th>
+        </tr>
+        @foreach (ProveedorModel temp in ViewBag.Proveedores)
+        {
+            <tr>
+                <td>@temp.nombre</td>
+                <td>Eliminar</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<script>
+
+
+    var table = document.getElementById('table');
+
+    for (var i = 1; i < table.rows.length; i++) {
+        table.rows[i].onclick = function () {
+          
+            buscar(this.cells[0].innerHTML);
+        };
+    }
+
+    function buscar(nombre) {
+
+        var parametros = {
+            "nombre": nombre
+        };
+        $.ajax(
+            {
+                data: parametros,
+                url: '/Producto/EliminarProveedor',
+                type: 'post',
+                beforeSend: function () {
+                
+                },
+                success: function (response) {
+            
+                    alert('Eliminado');
+
+                }
+            }
+        );
+
+    }// buscar
+</script>
