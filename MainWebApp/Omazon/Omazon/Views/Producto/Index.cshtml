@@ -37,91 +37,37 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
+                        <th scope="col">Precio US$</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="tbodyUser">
-                    <tr>
-                        <td>1</td>
-                        <td>Nombre de producto</td>
-                        <td>44</td>
-                        <td>100000</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
-                                Modificar
-                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
-                            </button>
-                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
-                                Eliminar
-                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Nombre de producto</td>
-                        <td>44</td>
-                        <td>100000</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
-                                Modificar
-                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
-                            </button>
-                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
-                                Eliminar
-                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Nombre de producto</td>
-                        <td>44</td>
-                        <td>100000</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
-                                Modificar
-                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
-                            </button>
-                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
-                                Eliminar
-                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Nombre de producto</td>
-                        <td>44</td>
-                        <td>100000</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
-                                Modificar
-                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
-                            </button>
-                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
-                                Eliminar
-                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Nombre de producto</td>
-                        <td>44</td>
-                        <td>100000</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
-                                Modificar
-                                <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
-                            </button>
-                            <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="">
-                                Eliminar
-                                <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
-                            </button>
-                        </td>
-                    </tr>
+                    @if (ViewBag.Productos != null)
+                    {
+                        List<ProductoModel> productos = ViewBag.Productos;
+                        @foreach (ProductoModel producto in productos)
+                        {
+                            <tr class="text-center">
+                                <td>@producto.IdProducto</td>
+                                <td>@producto.NombreProducto</td>
+                                <td>@producto.Stock</td>
+                                <td>@producto.Precio</td>
+                                <td>@producto.NombreCategoria</td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#editModal" onclick="putProductOnEditModal(this); return false;">
+                                        Modificar
+                                        <img src="~/Imagenes/edit_white_18dp.svg" alt="Icono modificar" class="ms-2 my-1" />
+                                    </button>
+                                    <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="putProductOnDeleteModal(this); return false;">
+                                        Eliminar
+                                        <img src="~/Imagenes/delete_white_18dp.svg" alt="Icono eliminar" class="ms-2 my-1" />
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+
                 </tbody>
             </table>
         </div>
@@ -133,7 +79,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Busqueda de productos</h5>
             </div>
-            <form class="was-validated" method="get" asp-controller="" asp-action="">
+            <form class="was-validated" method="post" asp-controller="Producto" asp-action="Index">
                 <div class="modal-body">
                     <div class="container">
                         <div class="mb-3">
@@ -157,7 +103,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Modificar información del producto</h5>
             </div>
-            <form id="formEditProductModal" class="row g-3 p-3 was-validated" method="post" asp-controller="" asp-action="">
+            <form id="formEditProductModal" class="row g-3 p-3 was-validated" method="post" asp-controller="Admin" asp-action="EditProduct">
                 <input id="inputIdProduct" class="form-control is-invalid" type="hidden" asp-for="IdProducto" />
                 <div class="col-md-12">
                     <label for="inputName" class="form-label">Nombre</label>
@@ -174,6 +120,38 @@
                     <input id="inputPrice" class="form-control is-invalid" type="number" asp-for="Precio" required>
                     <span class="field-validation-error" asp-validation-for="Precio"></span>
                 </div>
+                <div class="col-md-12">
+                    <label for="inputCateg" class="form-label">Categoria</label>
+                    <select id="SelectCategoria" asp-for="IDCategoria">
+                        @foreach (CategoriaModel temp in ViewBag.Categorias)
+                        {
+                            <option value="@temp.IdCategoria">
+                                @temp.NombreCategoria
+                            </option>
+
+                        }
+                    </select>
+                    <span class="field-validation-error" asp-validation-for="IDCategoria"></span>
+                </div>
+                <div class="col-md-12">
+                    <label for="inputImage" class="form-label">Imagen</label>
+
+                    <img id="laImagen" width="100" src="/Imagenes/Cargador.png" />
+
+                    <select id="SelectRutaImagen" asp-for="RutaImagen">
+                        <option value="Cargador.png">Cargador</option>
+                        <option value="audifonos.png">Audifonos</option>
+                        <option value="computadora.png">Computadora</option>
+                        <option value="Monitor.png">Monitor</option>
+                        <option value="Mouse.png">Mouse</option>
+                        <option value="Teclado.png">Teclado</option>
+                        <option value="USB.png">USB</option>
+                        <option value="telefono.png">Telefono</option>
+                        <option value="parlante.png">Parlante</option>
+                    </select>
+                    <span class="field-validation-error" asp-validation-for="RutaImagen"></span>
+                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button id="btnEdit" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Actualizar</button>
@@ -188,7 +166,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Registrar un nuevo producto</h5>
             </div>
-            <form id="formAddProductModal" class="row g-3 p-3 was-validated" method="post" asp-controller="" asp-action="">
+            <form id="formAddProductModal" class="row g-3 p-3 was-validated" method="post" asp-controller="Admin" asp-action="CreateProduct">
                 <input id="inputIdProducto" class="form-control is-invalid" type="hidden" asp-for="IdProducto" />
                 <div class="col-md-12">
                     <label for="inputName" class="form-label">Nombre</label>
@@ -205,6 +183,38 @@
                     <input id="inputPrice" class="form-control is-invalid" type="number" placeholder="Ingrese el precio" asp-for="Precio" required>
                     <span class="field-validation-error" asp-validation-for="Precio"></span>
                 </div>
+                <div class="col-md-12">
+                    <label for="inputCateg" class="form-label">Categoria</label>
+                    <select id="SelectCategoria" asp-for="IDCategoria">
+                        @foreach (CategoriaModel temp in ViewBag.Categorias)
+                        {
+                            <option value="@temp.IdCategoria">
+                                @temp.NombreCategoria
+                            </option>
+
+                        }
+                    </select>
+                    <span class="field-validation-error" asp-validation-for="IDCategoria"></span>
+                </div>
+                <div class="col-md-12">
+                    <label for="inputImage" class="form-label">Imagen</label>
+
+                    <img id="laImagen" width="100" src="/Imagenes/Cargador.png" />
+
+                    <select id="SelectRutaImagen" asp-for="RutaImagen">
+                        <option value="Cargador.png">Cargador</option>
+                        <option value="audifonos.png">Audifonos</option>
+                        <option value="computadora.png">Computadora</option>
+                        <option value="Monitor.png">Monitor</option>
+                        <option value="Mouse.png">Mouse</option>
+                        <option value="Teclado.png">Teclado</option>
+                        <option value="USB.png">USB</option>
+                        <option value="telefono.png">Telefono</option>
+                        <option value="parlante.png">Parlante</option>
+                    </select>
+                    <span class="field-validation-error" asp-validation-for="RutaImagen"></span>
+                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button id="btnEdit" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
@@ -220,7 +230,13 @@
                 <h5 class="modal-title" id="exampleModalLabel">¿Está seguro de eliminar este producto?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="formDeleteProductModal" method="post" asp-controller="User" asp-action="Delete">
+            <form id="formDeleteProductModal" method="post" asp-controller="Admin" asp-action="DeleteProduct">
+                <input id="inputIdProduct1" class="form-control is-invalid" type="hidden" asp-for="IdProducto" />
+                <div class="col-md-12">
+                    <label for="inputName1" class="form-label">Nombre</label>
+                    <input id="inputName1" class="form-control is-invalid" type="text" asp-for="NombreProducto" required>
+                    <span class="field-validation-error" asp-validation-for="NombreProducto"></span>
+                </div>
                 <div id="msgContainerDeleteModal" class="modal-body">
                     <p>El producto se eliminara permanentemente del sistema</p>
                 </div>
@@ -233,8 +249,16 @@
     </div>
 </div>
 
+
+
 @section scripts
 {
     <script src="~/js/product.js" asp-append-version="true"></script>
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        SelectRutaImagen.addEventListener("change", () => {
+            laImagen.setAttribute("src", "/Imagenes/" + SelectRutaImagen.selectedOptions[0].value)
+    })
+    </script>
 }

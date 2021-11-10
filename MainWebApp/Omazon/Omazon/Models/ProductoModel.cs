@@ -24,9 +24,12 @@ namespace Omazon.Models
         public string NombreProveedor { get; set; }
       
         public int Cantidad { get; set; }
-
+        [Required(ErrorMessage = "La imagen es requerido")]
         public string RutaImagen { get; set; }
+        [Required(ErrorMessage = "La categoria es requerido")]
         public string NombreCategoria { get; set; }
+
+        public string IDCategoria { get; set; }
 
         public int SubTotal { get; set; }
     }
