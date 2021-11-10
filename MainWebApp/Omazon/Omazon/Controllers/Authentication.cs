@@ -49,11 +49,13 @@ namespace Omazon.Controllers
                     switch (response["RESPONSE"].ToString())
                     {
                         case "1":
-                            await CreateUserSession(userViewModel.UserName, response["TIPO_ROLE"].ToString());
+                            await CreateUserSession(userViewModel.UserName, response["TIPO_ROLE"].ToString()
+                                , response["ID_USUARIO"].ToString());
                             connection.Close();
                             return Redirect("~/Admin/Index");
                         case "2":
-                            await CreateUserSession(userViewModel.UserName, response["TIPO_ROLE"].ToString());
+                            await CreateUserSession(userViewModel.UserName, response["TIPO_ROLE"].ToString()
+                                , response["ID_USUARIO"].ToString());
                             connection.Close();
                             return Redirect("~/Home/Index");
                         default:
@@ -65,9 +67,8 @@ namespace Omazon.Controllers
             }
         }
 
-        public async Task<bool> CreateUserSession(string NombreUsuario, string Role)
+        public async Task<bool> CreateUserSession(string NombreUsuario, string Role, string IdUsuario)
         {
-
             List<Claim> claims;
             AuthenticationProperties authProperties;
             ClaimsIdentity claimsIdentity;
@@ -76,38 +77,19 @@ namespace Omazon.Controllers
             {
                  new Claim(ClaimTypes.Name,NombreUsuario ),
                  new Claim(ClaimTypes.Role, Role),
+                 new Claim(ClaimTypes.Sid, IdUsuario),
              };
-
-            //uso de cookies para la sesion
 
             claimsIdentity = new ClaimsIdentity(
             claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            //propiedades de la sesion
-
             authProperties = new AuthenticationProperties
             {
                 AllowRefresh = true,
-                // Refreshing the authentication session should be allowed.
-
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                // The time at which the authentication ticket expires.
-
                 IsPersistent = true,
-                // Whether the authentication session is persisted across 
-                // multiple requests. When used with cookies, controls
-                // whether the cookie's lifetime is absolute (matching the
-                // lifetime of the authentication ticket) or session-based.
-
-                //IssuedUtc = <DateTimeOffset>,
-                // The time at which the authentication ticket was issued.
-
-                //RedirectUri = <string>
-                // The full path or absolute URI to be used as an http 
-                // redirect response value.
             };
 
-            //informe al contexto (todo el sistema) que hay un nuevo usuario
             await HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
             new ClaimsPrincipal(claimsIdentity),
@@ -115,6 +97,5 @@ namespace Omazon.Controllers
 
             return true;
         }
-
     }
 }
