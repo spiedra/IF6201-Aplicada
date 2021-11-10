@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Omazon.Controllers
@@ -30,7 +31,7 @@ namespace Omazon.Controllers
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
 
-            string sqlQuery = $"exec [USUARIO].[sp_SELECT_CARRITO] '{2}'"; //HttpContext.User.Identity.Name -> para recuperar el nombre del usuario
+            string sqlQuery = $"exec [USUARIO].[sp_SELECT_CARRITO] '{HttpContext.User.FindFirstValue(ClaimTypes.Sid)}'";
             using (SqlCommand command = new SqlCommand(sqlQuery, connection))
             {
                 command.CommandType = CommandType.Text;
@@ -73,7 +74,7 @@ namespace Omazon.Controllers
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
             int subTotal = precio * cantidad;
-            string sqlQuery = $"exec [OMAZON].[sp_INSERTAR_PRODUCTO_CARRITO] '{2}'," + //cambiar al id cuando esté el session
+            string sqlQuery = $"exec [OMAZON].[sp_INSERTAR_PRODUCTO_CARRITO] '{HttpContext.User.FindFirstValue(ClaimTypes.Sid)}'," +
                 $"'{idProducto}', '{cantidad}', '{subTotal}'";
             string respuesta = "Error";
             using (SqlCommand command = new SqlCommand(sqlQuery, connection))
@@ -98,7 +99,7 @@ namespace Omazon.Controllers
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
 
-            string sqlQuery = $"exec [OMAZON].[sp_ELIMINAR_PRODUCTO_CARRITO] '{2}'," + //cambiar al id cuando esté el session
+            string sqlQuery = $"exec [OMAZON].[sp_ELIMINAR_PRODUCTO_CARRITO] '{HttpContext.User.FindFirstValue(ClaimTypes.Sid)}'," +
                 $"'{idProducto}'";
             string respuesta = "Error";
             using (SqlCommand command = new SqlCommand(sqlQuery, connection))
