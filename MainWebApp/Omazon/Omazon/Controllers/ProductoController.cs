@@ -21,8 +21,120 @@ namespace Omazon.Controllers
 
         public ActionResult Index()
         {
+
+            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            var connection = new SqlConnection(connectionString);
+
+            string sqlQuery = $"exec PRODUCTO.sp_SELECT_PRODUCTOS";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            {
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader respuestaReader = command.ExecuteReader();
+
+                List<ProductoModel> productos = new List<ProductoModel>();
+                while (respuestaReader.Read())
+                {
+                    ProductoModel producto = new ProductoModel();
+
+                    producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
+                    producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
+                    producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
+                    producto.Precio = respuestaReader["PRECIO"].ToString();
+                    //producto.IdProveedor = Int32.Parse(respuestaReader["ID_PROVEEDOR"].ToString());
+                    producto.NombreProveedor = respuestaReader["NOMBRE_PROVEEDOR"].ToString();
+                    producto.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
+                    producto.RutaImagen = respuestaReader["RUTA_IMAGEN"].ToString();
+
+                    productos.Add(producto);
+
+                }
+                connection.Close();
+                ViewBag.Productos = productos;
+            }
+
+            sqlQuery = $"exec [OMAZON].[sp_SELECT_CATEGORIA]";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            {
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader respuestaReader = command.ExecuteReader();
+
+                List<CategoriaModel> categorias = new List<CategoriaModel>();
+                while (respuestaReader.Read())
+                {
+                    CategoriaModel categoria = new CategoriaModel();
+
+                    categoria.IdCategoria = Int32.Parse(respuestaReader["ID_CATEGORIA"].ToString());
+                    categoria.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
+
+                    categorias.Add(categoria);
+
+                }
+                connection.Close();
+                ViewBag.Categorias = categorias;
+            }
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(ProductoModel productoModal)
+        {
+
+            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            var connection = new SqlConnection(connectionString);
+
+            string sqlQuery = $"exec [OMAZON].[sp_BUSCAR_PRODUCTO_NOMBRE] @NOMBRE_BUSCAR='{productoModal.NombreProducto}'";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            {
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader respuestaReader = command.ExecuteReader();
+
+                List<ProductoModel> productos = new List<ProductoModel>();
+                while (respuestaReader.Read())
+                {
+                    ProductoModel producto = new ProductoModel();
+
+                    producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
+                    producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
+                    producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
+                    producto.Precio = respuestaReader["PRECIO"].ToString();
+                    //producto.IdProveedor = Int32.Parse(respuestaReader["ID_PROVEEDOR"].ToString());
+                    producto.NombreProveedor = respuestaReader["NOMBRE_PROVEEDOR"].ToString();
+                    producto.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
+                    producto.RutaImagen = respuestaReader["RUTA_IMAGEN"].ToString();
+
+                    productos.Add(producto);
+
+                }
+                connection.Close();
+                ViewBag.Productos = productos;
+            }
+
+            sqlQuery = $"exec [OMAZON].[sp_SELECT_CATEGORIA]";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            {
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader respuestaReader = command.ExecuteReader();
+
+                List<CategoriaModel> categorias = new List<CategoriaModel>();
+                while (respuestaReader.Read())
+                {
+                    CategoriaModel categoria = new CategoriaModel();
+
+                    categoria.IdCategoria = Int32.Parse(respuestaReader["ID_CATEGORIA"].ToString());
+                    categoria.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
+
+                    categorias.Add(categoria);
+
+                }
+                connection.Close();
+                ViewBag.Categorias = categorias;
+            }
+            return View();
+        }
+
 
         [HttpGet]
         public IActionResult Ver(ProductoModel producto)
@@ -30,6 +142,7 @@ namespace Omazon.Controllers
             ViewBag.Producto = producto;
             return View();
         }
+
 
         [HttpGet]
         public IActionResult BusquedaProducto(ProductoModel productoBusqueda)
