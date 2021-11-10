@@ -20,12 +20,12 @@
                     List<ProductoModel> productos = ViewBag.Carrito.Productos;
                     @foreach (ProductoModel producto in productos)
                     {
-                        <tr class="text-center">
+                        <tr class="text-center" id="row-@producto.IdProducto">
                             <td>@producto.NombreProducto</td>
                             <td>@producto.Cantidad</td>
                             <td>@producto.Precio US$</td>
                             <td>@producto.SubTotal</td>
-                            <td class="text-center"><button id="eliminar" type="button" class="btn btn-danger text-center" onclick="eliminarRow(this); eliminarDeCarrito(); return false;">x</button></td>
+                            <td class="text-center"><button id="eliminar" type="button" class="btn btn-danger text-center" onclick="eliminarDeCarrito(@producto.IdProducto); return false;">x</button></td>
                         </tr>
                     }
                 }

@@ -180,7 +180,7 @@ namespace Omazon.Controllers
         }//BusquedaProducto
 
 
-        public String AgregarProductoACarrito(int idProducto, int precio , int cantidad)
+        public string AgregarProductoACarrito(int idProducto, int precio , int cantidad)
         {
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
@@ -205,6 +205,32 @@ namespace Omazon.Controllers
             return respuesta;
         }
 
-        
+        public string EliminarProductoCarrito(int idProducto)
+        {
+            /*
+            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            var connection = new SqlConnection(connectionString);
+            var subTotal = precio * cantidad;
+            string sqlQuery = $"exec [OMAZON].[sp_INSERTAR_PRODUCTO_CARRITO] '{2}'," +
+                $"'{idProducto}', '{cantidad}', '{subTotal}'";
+            string respuesta = "Error";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            {
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader respuestaReader = command.ExecuteReader();
+
+
+                List<ProductoModel> productos = new List<ProductoModel>();
+                if (respuestaReader.Read())
+                {
+                    respuesta = respuestaReader["RESPUESTA"].ToString();
+                }
+                connection.Close();
+            }
+            */
+            return "";
+        }
+            
     }
 }
