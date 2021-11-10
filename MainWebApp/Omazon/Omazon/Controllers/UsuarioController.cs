@@ -92,5 +92,28 @@ namespace Omazon.Controllers
             }
             return respuesta;
         }
+        
+        public string EliminarProductoCarrito(int idProducto)
+        {
+            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            var connection = new SqlConnection(connectionString);
+
+            string sqlQuery = $"exec [OMAZON].[sp_ELIMINAR_PRODUCTO_CARRITO] '{2}'," + //cambiar al id cuando esté el session
+                $"'{idProducto}'";
+            string respuesta = "Error";
+            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            {
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader respuestaReader = command.ExecuteReader();
+
+                if (respuestaReader.Read())
+                {
+                    respuesta = respuestaReader["RESPUESTA"].ToString();
+                }
+                connection.Close();
+            }
+            return respuesta;
+        }
     }
 }
