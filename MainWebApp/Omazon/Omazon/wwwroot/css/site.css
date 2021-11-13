@@ -130,3 +130,8 @@ body {
         max-width: 40em;
     }
 }
+
+.field-validation-error {
+    color: red;
+    font-size: smaller;
+}
