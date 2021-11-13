@@ -51,6 +51,7 @@ namespace Omazon.Controllers
                         case "1":
                             await CreateUserSession(userViewModel.UserName, response["TIPO_ROLE"].ToString()
                                 , response["ID_USUARIO"].ToString());
+                            //ViewBag.Response = HttpContext.User.FindFirstValue(ClaimTypes.Sid);
                             connection.Close();
                             return Redirect("~/Admin/Index");
                         case "2":
