@@ -39,7 +39,6 @@ namespace Omazon.Controllers
                 while (respuestaReader.Read())
                 {
                     ProductoModel producto = new ProductoModel();
-
                     producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
                     producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
                     producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
@@ -48,9 +47,7 @@ namespace Omazon.Controllers
                     producto.NombreProveedor = respuestaReader["NOMBRE_PROVEEDOR"].ToString();
                     producto.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
                     producto.RutaImagen = respuestaReader["RUTA_IMAGEN"].ToString();
-
                     productos.Add(producto);
-
                 }
                 connection.Close();
                 ViewBag.Productos = productos;

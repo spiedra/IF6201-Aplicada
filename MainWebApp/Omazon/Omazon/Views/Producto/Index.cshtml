@@ -67,7 +67,6 @@
                             </tr>
                         }
                     }
-
                 </tbody>
             </table>
         </div>
@@ -128,7 +127,6 @@
                             <option value="@temp.IdCategoria">
                                 @temp.NombreCategoria
                             </option>
-
                         }
                     </select>
                     <span class="field-validation-error" asp-validation-for="IDCategoria"></span>
@@ -191,7 +189,6 @@
                             <option value="@temp.IdCategoria">
                                 @temp.NombreCategoria
                             </option>
-
                         }
                     </select>
                     <span class="field-validation-error" asp-validation-for="IDCategoria"></span>
@@ -259,6 +256,6 @@
     <script>
         SelectRutaImagen.addEventListener("change", () => {
             laImagen.setAttribute("src", "/Imagenes/" + SelectRutaImagen.selectedOptions[0].value)
-    })
+        })
     </script>
 }
