@@ -18,7 +18,7 @@
 <div class="row m-1">
     @foreach (ProductoModel producto in ViewBag.Productos)
     {
-        string imagenRuta = "/Imagenes/" + @producto.RutaImagen; 
+        string imagenRuta = "/Imagenes/" + @producto.RutaImagen;
         <form method="get" asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
 
             <div class="card">
@@ -27,7 +27,7 @@
                     <h5 class="card-title">@producto.NombreProducto</h5>
                     <h3> Precio : @producto.Precio US$</h3>
                     <div class="row d-flex">
-                        <input type="number" id="cantidad-@producto.IdProducto" class="form-control-sm col-4 m-auto" value="1"/>
+                        <input type="number" id="cantidad-@producto.IdProducto" class="form-control-sm col-4 m-auto" value="1" />
                         <button type="button" id="btnCarrito" onclick="agregarACarrito(@producto.IdProducto); return false;" class="btn btn-info text-white col-7 m-auto">Agregar al carrito</button>
                     </div>
                 </div>
@@ -42,6 +42,6 @@
                     <button type="submit" class="btn btn-primary col-4">Ver</button>
                 </div>
             </div>
-    </form>
+        </form>
     }
 </div>

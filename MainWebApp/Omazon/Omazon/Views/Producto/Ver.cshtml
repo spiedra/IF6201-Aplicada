@@ -1,6 +1,8 @@
-﻿
+﻿@model CreditCardModel
+@{
+    ViewData["Title"] = "Detalles";
 
-
+}
 <div class="row">
     <div class="col-6">
         @{
@@ -21,14 +23,49 @@
         </p>
         <h3 class="text-center text-success">Precio: @ViewBag.Producto.Precio US$</h3>
 
-        <form class="text-center mt-4" method="post">
+        @*<form class="text-center mt-4" method="post">
             <input type="text" id="idProducto" value="@ViewBag.Producto.IdProducto" hidden>
             <input type="text" id="precio" value="@ViewBag.Producto.Precio" hidden>
             <label for="cantidad" class="form-label">Cantidad:</label>
             <input type="number" class="form-control" id="cantidad" value="1" required>
             <button type="button" onclick="agregarACarrito(); return false;" class="btn btn-info text-light m-1">Agregar al carrito</button>
-            <button type="submit" class="btn btn-primary m-1">Comprar</button>
-        </form>
-
+            <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#checkOutModal">Comprar</button>
+        </form>*@
+    </div>
+    <div class="modal fade" id="checkOutModal" tabindex="-1" aria-labelledby="checkOutModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Información de pago</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="formCheckOut" class="modal-body row g-3 p-3 was-validated" method="POST" asp-controller="Producto" asp-action="ConfirmPurchase">
+                    <div class="col-md-12">
+                        <label for="inDireccion">Dirección</label>
+                        <input id="inDireccion" class="form-control" type="text" placeholder="Ingrese su dirección" asp-for="Direccion" required>
+                        <span class="field-validation-error" asp-validation-for="Direccion"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inNumeroTarjeta">Numero de tarjeta</label>
+                        <input id="inNumeroTarjeta" type="text" class="form-control" placeholder="0000-0000-0000-0000" asp-for="NumeroTarjeta" required>
+                        <span class="field-validation-error" asp-validation-for="NumeroTarjeta"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inFechaVencimiento">Fecha de vencimiento</label>
+                        <input id="inFechaVencimiento" type="text" class="form-control" placeholder="mm/yy" asp-for="FechaVencimiento" required>
+                        <span class="field-validation-error" asp-validation-for="FechaVencimiento"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inCodigoSeguridad">Código de seguridad (CVV)</label>
+                        <input id="inCodigoSeguridad" type="text" class="form-control is-invalid" placeholder="123" asp-for="CodigoSeguridad" required>
+                        <span class="field-validation-error" asp-validation-for="CodigoSeguridad"></span>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" form="formCheckOut">Confirmar compra</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

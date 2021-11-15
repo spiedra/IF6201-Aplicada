@@ -28,43 +28,48 @@ namespace Omazon.Controllers
 
         public IActionResult Carrito()
         {
-            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
-            var connection = new SqlConnection(connectionString);
+            //string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            //var connection = new SqlConnection(connectionString);
 
-            string sqlQuery = $"exec [USUARIO].[sp_SELECT_CARRITO] '{HttpContext.User.FindFirstValue(ClaimTypes.Sid)}'";
-            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            //string sqlQuery = $"exec [USUARIO].[sp_SELECT_CARRITO] '{HttpContext.User.FindFirstValue(ClaimTypes.Sid)}'";
+            //using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            //{
+            //    command.CommandType = CommandType.Text;
+            //    connection.Open();
+            //    SqlDataReader respuestaReader = command.ExecuteReader();
+
+            //    if (!respuestaReader.HasRows)
+            //        return View();
+
+            //    CarritoModel carrito = new CarritoModel();
+            //    carrito.Productos = new List<ProductoModel>();
+
+            //    carrito.PrecioTotal = 0;
+
+            //    while (respuestaReader.Read())
+            //    {
+            //        ProductoModel producto = new ProductoModel();
+
+            //        carrito.IdCarritoCompras = Int32.Parse(respuestaReader["ID_CARRITO_COMPRAS"].ToString());
+            //        producto.SubTotal = Int32.Parse(respuestaReader["SUB_TOTAL"].ToString());
+
+            //        producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
+            //        producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
+            //        producto.Cantidad = Int32.Parse(respuestaReader["CANTIDAD"].ToString());
+            //        producto.Precio = respuestaReader["PRECIO"].ToString();
+
+            //        carrito.PrecioTotal += producto.SubTotal;
+
+            //        carrito.Productos.Add(producto);
+
+            //    }
+            //    connection.Close();
+            //    ViewBag.Carrito = carrito;
+            //}
+            if (TempData["isShow"] != null && TempData["message"] != null)
             {
-                command.CommandType = CommandType.Text;
-                connection.Open();
-                SqlDataReader respuestaReader = command.ExecuteReader();
-
-                if (!respuestaReader.HasRows)
-                    return View();
-                
-                CarritoModel carrito = new CarritoModel();
-                carrito.Productos = new List<ProductoModel>();
-
-                carrito.PrecioTotal = 0;
-
-                while (respuestaReader.Read())
-                {
-                    ProductoModel producto = new ProductoModel();
-
-                    carrito.IdCarritoCompras = Int32.Parse(respuestaReader["ID_CARRITO_COMPRAS"].ToString());
-                    producto.SubTotal = Int32.Parse(respuestaReader["SUB_TOTAL"].ToString());
-
-                    producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
-                    producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
-                    producto.Cantidad = Int32.Parse(respuestaReader["CANTIDAD"].ToString());
-                    producto.Precio = respuestaReader["PRECIO"].ToString();
-
-                    carrito.PrecioTotal += producto.SubTotal;
-
-                    carrito.Productos.Add(producto);
-
-                }
-                connection.Close();
-                ViewBag.Carrito = carrito;
+                ViewBag.ShowModalResponse = true;
+                ViewBag.Message = TempData["message"];
             }
             return View();
         }
@@ -115,6 +120,14 @@ namespace Omazon.Controllers
                 connection.Close();
             }
             return respuesta;
+        }
+        private void DisplayMessageDynamically()
+        {
+            if (TempData["isShow"] != null && TempData["message"] != null)
+            {
+                ViewBag.ShowModalResponse = true;
+                ViewBag.Message = TempData["message"];
+            }
         }
     }
 }
