@@ -1,39 +1,43 @@
-﻿@{ 
+﻿@{
     @model Omazon.Models.ProductoModel
 }
+
 <div class="m-1 p-2 bg-dark text-light rounded">
     <h1 class="text-center">Resultados para: </h1>
     <h2 class="text-info text-center">@ViewBag.ValorBusqueda</h2>
 </div>
 
 <div class="row m-1">
-    @foreach (ProductoModel producto in ViewBag.Productos)
+    @if (ViewBag.busqueda!=null)
     {
-        string imagenRuta = "/Imagenes/" + @producto.RutaImagen;
-        <form method="get" asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
+        @foreach (ProductoModel producto in ViewBag.busqueda)
+        {
+            string imagenRuta = "/Imagenes/" + @producto.RutaImagen;
+            <form method="get" asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
 
-            <div class="card">
-                <img src=@imagenRuta class="card-img-top" alt="foto-producto-de-limpieza" height="250">
-                <div class="card-body">
-                    <h5 class="card-title">@producto.NombreProducto</h5>
-                    <h3> Precio : @producto.Precio US$</h3>
-                    <div class="row d-flex">
-                        <input type="number" id="cantidad" class="form-control-sm col-4 m-auto" value="1" />
-                        <button type="button" id="btnCarrito" onclick="agregarACarrito(); return false;" class="btn btn-info text-white col-7 m-auto">Agregar al carrito</button>
+                <div class="card">
+                    <img src=@imagenRuta class="card-img-top" alt="foto-producto-de-limpieza" height="250">
+                    <div class="card-body">
+                        <h5 class="card-title">@producto.NombreProducto</h5>
+                        <h3> Precio : @producto.Precio US$</h3>
+                        <div class="row d-flex">
+                            <input type="number" id="cantidad" class="form-control-sm col-4 m-auto" value="1" />
+                            <button type="button" id="btnCarrito" onclick="agregarACarrito(); return false;" class="btn btn-info text-white col-7 m-auto">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="card-footer row d-flex justify-content-end m-0">
+                        <input type="hidden" id="idProducto" asp-for="@Model.IdProducto" value="@producto.IdProducto" />
+                        <input type="hidden" asp-for="@Model.NombreProducto" value="@producto.NombreProducto" />
+                        <input type="hidden" asp-for="@Model.Stock" value="@producto.Stock" />
+                        <input type="hidden" id="precio" asp-for="@Model.Precio" value="@producto.Precio" />
+                        <input type="hidden" asp-for="@Model.NombreProveedor" value="@producto.NombreProveedor" />
+                        <input type="hidden" asp-for="@Model.NombreCategoria" value="@producto.NombreCategoria" />
+                        <input type="hidden" asp-for="@Model.RutaImagen" value="@producto.RutaImagen" />
+                        <button type="submit" class="btn btn-primary col-4">Ver</button>
                     </div>
                 </div>
-                <div class="card-footer row d-flex justify-content-end m-0">
-                    <input type="hidden" id="idProducto" asp-for="@Model.IdProducto" value="@producto.IdProducto" />
-                    <input type="hidden" asp-for="@Model.NombreProducto" value="@producto.NombreProducto" />
-                    <input type="hidden" asp-for="@Model.Stock" value="@producto.Stock" />
-                    <input type="hidden" id="precio" asp-for="@Model.Precio" value="@producto.Precio" />
-                    <input type="hidden" asp-for="@Model.NombreProveedor" value="@producto.NombreProveedor" />
-                    <input type="hidden" asp-for="@Model.NombreCategoria" value="@producto.NombreCategoria" />
-                    <input type="hidden" asp-for="@Model.RutaImagen" value="@producto.RutaImagen" />
-                    <button type="submit" class="btn btn-primary col-4">Ver</button>
-                </div>
-            </div>
 
-        </form>
+            </form>
+        }
     }
 </div>

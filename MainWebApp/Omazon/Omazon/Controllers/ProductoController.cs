@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Nest;
 using Omazon.Models;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace Omazon.Controllers
     public class ProductoController : Controller
     {
         public IConfiguration Configuration { get; }
+        private readonly ElasticClient _client;
 
-        public ProductoController(IConfiguration configuration)
+        public ProductoController(IConfiguration configuration, ElasticClient client)
         {
             Configuration = configuration;
+            _client = client;
         }
 
         public ActionResult Index()
@@ -147,35 +150,17 @@ namespace Omazon.Controllers
         [HttpGet]
         public IActionResult BusquedaProducto(ProductoModel productoBusqueda)
         {
-            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
-            var connection = new SqlConnection(connectionString);
+           
+            ISearchResponse<ProductoModel> response;
 
-            string sqlQuery = $"exec [OMAZON].[sp_BUSCAR_PRODUCTO_NOMBRE] '{productoBusqueda.NombreProducto}'";
-            using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+            var searchRequest = new SearchRequest<ProductoModel>
             {
-                command.CommandType = CommandType.Text;
-                connection.Open();
-                SqlDataReader respuestaReader = command.ExecuteReader();
+                Query = Query<ProductoModel>.QueryString(qs => qs.Query($"*{productoBusqueda.NombreProducto}*").DefaultField(f => f.NombreProducto).DefaultOperator(Operator.And))
+            };
 
-                List<ProductoModel> productos = new List<ProductoModel>();
-                while (respuestaReader.Read())
-                {
-                    ProductoModel producto = new ProductoModel();
-
-                    producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
-                    producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
-                    producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
-                    producto.Precio = respuestaReader["PRECIO"].ToString();
-                    producto.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
-                    producto.RutaImagen = respuestaReader["RUTA_IMAGEN"].ToString();
-
-                    productos.Add(producto);
-
-                }
-                connection.Close();
-                ViewBag.Productos = productos;
-                ViewBag.ValorBusqueda = productoBusqueda.NombreProducto;
-            }
+            response = _client.Search<ProductoModel>(searchRequest);
+            ViewBag.busqueda = response.Documents;
+            ViewBag.valorBusqueda = productoBusqueda.NombreProducto;
             return View();
         }//BusquedaProducto
 
