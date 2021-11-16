@@ -42,7 +42,7 @@ namespace Omazon.Controllers
                     producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
                     producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
                     producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
-                    producto.Precio = respuestaReader["PRECIO"].ToString();
+                    producto.Precio = int.Parse(respuestaReader["PRECIO"].ToString());
                     //producto.IdProveedor = Int32.Parse(respuestaReader["ID_PROVEEDOR"].ToString());
                     producto.NombreProveedor = respuestaReader["NOMBRE_PROVEEDOR"].ToString();
                     producto.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
@@ -98,7 +98,7 @@ namespace Omazon.Controllers
                     producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
                     producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
                     producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
-                    producto.Precio = respuestaReader["PRECIO"].ToString();
+                    producto.Precio = int.Parse(respuestaReader["PRECIO"].ToString());
                     //producto.IdProveedor = Int32.Parse(respuestaReader["ID_PROVEEDOR"].ToString());
                     producto.NombreProveedor = respuestaReader["NOMBRE_PROVEEDOR"].ToString();
                     producto.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();
@@ -148,17 +148,18 @@ namespace Omazon.Controllers
         public IActionResult BusquedaProducto(ProductoModel productoBusqueda)
         {
            
-            ISearchResponse<ProductoModel> response;
+            ISearchResponse<ElasticProduct> response;
 
-            var searchRequest = new SearchRequest<ProductoModel>
-            {
-                Query = Query<ProductoModel>.QueryString(qs => qs.Query($"*{productoBusqueda.NombreProducto}*").DefaultField(f => f.NombreProducto).DefaultOperator(Operator.And))
-            };
+            //var searchRequest = new SearchRequest<ProductoModel>
+            //{
+            //    Query = Query<ProductoModel>.QueryString(qs => qs.Query($"*{productoBusqueda.NombreProducto}*").DefaultField(f => f.NombreProducto).DefaultOperator(Operator.And))
+            //};
 
-            response = _client.Search<ProductoModel>(searchRequest);
-            ViewBag.busqueda = response.Documents;
-            ViewBag.valorBusqueda = productoBusqueda.NombreProducto;
-            return View();
+            //response = _client.Search<ProductoModel>(searchRequest);
+             response = _client.Search<ElasticProduct>(p => p.Query(q => q.MatchAll()));
+            //ViewBag.busqueda = response.Documents;
+            //ViewBag.valorBusqueda = productoBusqueda.NombreProducto;
+            return View(response);
         }//BusquedaProducto
 
 

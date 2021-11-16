@@ -43,7 +43,7 @@ namespace Omazon.Controllers
                     producto.IdProducto = Int32.Parse(respuestaReader["ID_PRODUCTO"].ToString());
                     producto.NombreProducto = respuestaReader["NOMBRE_PRODUCTO"].ToString();
                     producto.Stock = Int32.Parse(respuestaReader["STOCK"].ToString());
-                    producto.Precio = respuestaReader["PRECIO"].ToString();
+                    producto.Precio = int.Parse(respuestaReader["PRECIO"].ToString());
                     //producto.IdProveedor = Int32.Parse(respuestaReader["ID_PROVEEDOR"].ToString());
                     producto.NombreProveedor = respuestaReader["NOMBRE_PROVEEDOR"].ToString();
                     producto.NombreCategoria = respuestaReader["NOMBRE_CATEGORIA"].ToString();

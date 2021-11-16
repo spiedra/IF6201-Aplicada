@@ -29,7 +29,7 @@ namespace Omazon
         public void ConfigureServices(IServiceCollection services)
         {
             var node = new SingleNodeConnectionPool(new Uri("http://localhost:9200"));
-            var settings = new ConnectionSettings(node).DefaultIndex("productoselastic");
+            var settings = new ConnectionSettings(node).DefaultIndex("productsamp");
             var client = new ElasticClient(settings);
             services.AddSingleton(client);
             services.AddControllersWithViews();
