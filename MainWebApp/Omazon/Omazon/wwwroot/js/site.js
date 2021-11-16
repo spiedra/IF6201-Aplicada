@@ -17,10 +17,10 @@
         },
         success: function (response) {
             
-            alert(response);
+            createModalResponse(response);
         },
         error: function () {
-            alert(response);
+            createModalResponse(response);
             //$('#respuesta').val("Error de conexión con el servidor");
         }
     });
@@ -43,7 +43,7 @@ function eliminarDeCarrito(idProducto) {
 
         },
         error: function () {
-            alert(response);
+            createModalResponse(response);
             //$('#respuesta').val("Error de conexión con el servidor");
         }
     });

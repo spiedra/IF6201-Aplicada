@@ -40,7 +40,7 @@ namespace Omazon.Controllers
 
                 if (!respuestaReader.HasRows)
                     return View();
-                
+
                 CarritoModel carrito = new CarritoModel();
                 carrito.Productos = new List<ProductoModel>();
 
@@ -65,6 +65,11 @@ namespace Omazon.Controllers
                 }
                 connection.Close();
                 ViewBag.Carrito = carrito;
+            }
+            if (TempData["isShow"] != null && TempData["message"] != null)
+            {
+                ViewBag.ShowModalResponse = true;
+                ViewBag.Message = TempData["message"];
             }
             return View();
         }
