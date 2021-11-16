@@ -101,7 +101,7 @@ namespace Omazon.Controllers
         {
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
-            Console.Write("id PRODUCTO LLEGUE :"+producto.IdProducto);
+        
             string sqlQuery = $"exec [PRODUCTO].[sp_DELETE_PRODUCTOS] @p_ID_PRODUCTO={producto.IdProducto}";
             using (SqlCommand command = new SqlCommand(sqlQuery, connection))
             {

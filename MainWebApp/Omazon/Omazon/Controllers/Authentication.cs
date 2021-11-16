@@ -28,6 +28,11 @@ namespace Omazon.Controllers
 
         public ActionResult Index()
         {
+            if (TempData["isShow"] != null && TempData["message"] != null)
+            {
+                ViewBag.ShowModalResponse = true;
+                ViewBag.Message = TempData["message"];
+            }
             return View();
         }
 
@@ -51,7 +56,6 @@ namespace Omazon.Controllers
                         case "1":
                             await CreateUserSession(userViewModel.UserName, response["TIPO_ROLE"].ToString()
                                 , response["ID_USUARIO"].ToString());
-                            //ViewBag.Response = HttpContext.User.FindFirstValue(ClaimTypes.Sid);
                             connection.Close();
                             return Redirect("~/Admin/Index");
                         case "2":
@@ -61,10 +65,14 @@ namespace Omazon.Controllers
                             return Redirect("~/Home/Index");
                         default:
                             connection.Close();
+                            TempData["isShow"] = true;
+                            TempData["message"] = "Usuario/Contraseña incorrecta. Inténtelo de nuevo";
                             return Redirect("Index");
                     }
                 }
-                return Redirect("Index");
+                TempData["isShow"] = true;
+                TempData["message"] = "Usuario/Contraseña incorrecta. Inténtelo de nuevo";
+                return RedirectToAction("Index");
             }
         }
 
@@ -97,6 +105,14 @@ namespace Omazon.Controllers
             authProperties);
 
             return true;
+        }
+        private void DisplayMessageDynamically()
+        {
+            if (TempData["isShow"] != null && TempData["message"] != null)
+            {
+                ViewBag.ShowModalResponse = true;
+                ViewBag.Message = TempData["message"];
+            }
         }
     }
 }

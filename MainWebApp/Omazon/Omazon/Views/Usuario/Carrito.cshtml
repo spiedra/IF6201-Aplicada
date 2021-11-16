@@ -56,7 +56,7 @@
                 <h5 class="modal-title">Información de pago</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="formCheckOut" class="modal-body row g-3 p-3 was-validated" method="POST" asp-controller="" asp-action="">
+            <form id="formCheckOut" class="modal-body row g-3 p-3 was-validated" method="POST" asp-controller="Producto" asp-action="ConfirmPurchase">
                 <div class="col-md-12">
                     <label for="inDireccion">Dirección</label>
                     <input id="inDireccion" class="form-control" type="text" placeholder="Ingrese su dirección" asp-for="Direccion" required>
@@ -89,4 +89,11 @@
 @section scripts
 {
     <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ('@ViewBag.ShowModalResponse' === 'True') {
+                createModalResponse("@ViewBag.Message");
+            }
+        });
+    </script>
 }

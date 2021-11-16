@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Omazon.Controllers
@@ -24,7 +24,6 @@ namespace Omazon.Controllers
 
         public ActionResult Index()
         {
-
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
 
@@ -79,7 +78,6 @@ namespace Omazon.Controllers
         [HttpPost]
         public ActionResult Index(ProductoModel productoModal)
         {
-
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
 
@@ -147,7 +145,6 @@ namespace Omazon.Controllers
         [HttpGet]
         public IActionResult BusquedaProducto(ProductoModel productoBusqueda)
         {
-           
             ISearchResponse<ElasticProduct> response;
 
             //var searchRequest = new SearchRequest<ProductoModel>
@@ -162,8 +159,7 @@ namespace Omazon.Controllers
             return View(response);
         }//BusquedaProducto
 
-
-        public string AgregarProductoACarrito(int idProducto, int precio , int cantidad)
+        public string AgregarProductoACarrito(int idProducto, int precio, int cantidad)
         {
             string connectionString = Configuration["ConnectionStrings:DB_Connection"];
             var connection = new SqlConnection(connectionString);
@@ -177,7 +173,7 @@ namespace Omazon.Controllers
                 connection.Open();
                 SqlDataReader respuestaReader = command.ExecuteReader();
 
-                
+
                 List<ProductoModel> productos = new List<ProductoModel>();
                 if (respuestaReader.Read())
                 {
@@ -214,6 +210,27 @@ namespace Omazon.Controllers
             */
             return "";
         }
-            
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmPurchaseAsync(CreditCardModel creditCardModel)
+        {
+            string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+            var connection = new SqlConnection(connectionString);
+            string sqlQuery = $"exec [OMAZON].[sp_REGISTRAR_COMPRA_BY_CARRITO] " +
+                $"'{HttpContext.User.FindFirstValue(ClaimTypes.Sid)}'" +
+                $", '{creditCardModel.Direccion}'" +
+                $", '{creditCardModel.NumeroTarjeta}'" +
+                $", '{creditCardModel.CodigoSeguridad}'" +
+                $", '{creditCardModel.FechaVencimiento}'";
+
+            using SqlCommand command = new SqlCommand(sqlQuery, connection);
+            command.CommandType = CommandType.Text;
+            connection.Open();
+            await command.ExecuteNonQueryAsync();
+            connection.Close();
+            TempData["isShow"] = true;
+            TempData["message"] = "Compra realizada con exito";
+            return RedirectToAction("Carrito", "Usuario");
+        }
     }
 }

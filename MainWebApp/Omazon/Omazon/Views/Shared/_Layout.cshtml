@@ -26,6 +26,9 @@
                                 <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Carrito">Carrito</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Request" asp-action="AccesoProveedor">Acceso a Proveedor</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-light me-1" asp-controller="Authentication" asp-action="Index">@this.Context.User.Identity.Name<img src="~/Imagenes/person_white_24dp.svg" alt="Sign-in icon" /></a>
                             </li>
                         </ul>
@@ -35,7 +38,7 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main id="pageMain" role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
@@ -48,6 +51,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/utility.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
