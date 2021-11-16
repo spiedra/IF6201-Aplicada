@@ -1,0 +1,30 @@
+﻿@model AccessRequestModel
+@{
+    ViewData["Title"] = "Solicitar acceso a proveedor";
+ 
+}
+
+<div class="container__index container-fluid m-0 p-0">
+
+    
+    <form class="container form__login needs-validation shadow" method="post" asp-controller="Request" asp-action="SendAccessRequest">
+        <h2 class="mb-4 text-center">Proveedores</h2>
+        <div class="container mt-2">
+            <label class="mb-2">Clave</label>
+            <input id="inClave" class="form-control" placeholder="Ingrese su clave de acceso" asp-for="Key">
+            <span class="field-validation-error" asp-validation-for="Key"></span>
+        </div>
+        <div class="container mt-2">
+            <label class="mb-2">Detalles</label>
+            <input id="inDetalles" type="text" class="form-control" placeholder="Ingrese los detalles" asp-for="Details">
+            <span class="field-validation-error" asp-validation-for="Details"></span>
+        </div>
+        <div class="container d-flex justify-content-center my-3">
+            <button id="" type="submit" class="btn btn-dark">Enviar</button>
+        </div>
+
+        <div class="text-center">
+            <span>@ViewBag.Ok</span>
+        </div>
+    </form>
+</div>

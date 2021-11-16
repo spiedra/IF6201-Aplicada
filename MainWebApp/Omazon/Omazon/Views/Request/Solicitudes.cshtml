@@ -1,0 +1,103 @@
+﻿@model AccessRequestModel
+@{
+    ViewData["Title"] = "Solicitudes Proveedores";
+
+}
+<h1 class="promo-table__title d-inline me-3">Solicitudes de Proveedores</h1>
+<div class="text-center">
+    <span>@ViewBag.Ok</span>
+</div>
+<div>
+    <div class="row table-responsive">
+        <div class="col-12">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Clave</th>
+                        <th scope="col">Detalles</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acción</th>
+
+                    </tr>
+                </thead>
+                <tbody id="tbodyUser">
+                    @if (ViewBag.requests != null)
+                    {
+                        List<AccessRequestModel> solicitudes = ViewBag.requests;
+                        @foreach (AccessRequestModel solicitud in solicitudes)
+                        {
+                            <tr class="text-center">
+                                <td>@solicitud.RequestId</td>
+                                <td>@solicitud.Key</td>
+                                <td>@solicitud.Details</td>
+                                <td>@solicitud.State</td>
+
+                                <td>
+                                    <button class="btn btn-success btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#checkModal" onclick="putRequestOnCheckModal(this); return false;">
+                                        Verificar
+                                    </button>
+                                    <button class="btn btn-danger btn-sm my-1 my-xl-0" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="putRequestOnDeleteModal(this); return false;">
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Está seguro de eliminar la solicitud?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formDeleteRequestModal" method="post" asp-controller="Request" asp-action="DeleteRequestById">
+                <input id="RequestId" name="RequestId" class="form-control is-invalid" type="hidden" asp-for="RequestId" />
+           
+                <div id="msgContainerDeleteModal" class="modal-body">
+                    <p>El producto se eliminara permanentemente del sistema</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Confirmar eliminación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="checkModal" tabindex="-1" aria-labelledby="checkModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Está seguro de verificar la solicitud?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formCheckRequestModal" method="post" asp-controller="Request" asp-action="DeleteRequestById">
+                <input id="inRequestId" name="inRequestId" class="form-control is-invalid" type="hidden" asp-for="RequestId" />
+                <input id="inKey" name="inKey" class="form-control is-invalid" type="hidden" asp-for="Key" />
+                <input id="inDetails" name="inDetails" class="form-control is-invalid" type="hidden" asp-for="Details" />
+                <input id="inState" name="inState" class="form-control is-invalid" type="hidden" asp-for="State" />
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Confirmar verificación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script src="~/js/proveedor.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+}
