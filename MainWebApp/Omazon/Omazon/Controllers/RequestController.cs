@@ -15,12 +15,22 @@ namespace Omazon.Controllers
         public IActionResult AccesoProveedor()
         {
             ViewBag.Ok = "";
+            this.DisplayDynamicMessage();
             return View();
+        }
+
+        public void DisplayDynamicMessage()
+        {
+            if (TempData["msg"] != null)
+            {
+                ViewBag.Ok = TempData["msg"];
+            }
         }
 
         public IActionResult Solicitudes()
         {
             ViewBag.Ok = "";
+            this.DisplayDynamicMessage();
             ViewBag.requests = JsonConvert.DeserializeObject<List<AccessRequestModel>>(GetRequests().Result);
             return View();
         }
@@ -33,8 +43,8 @@ namespace Omazon.Controllers
             HttpClient httpClient = new HttpClient();
             StringContent content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync("https://localhost:44353/Omazon/API/SendProviderRequest", content);
-            ViewBag.Ok = await response.Content.ReadAsStringAsync();
-            return View("Index");
+            TempData["msg"] = await response.Content.ReadAsStringAsync();
+            return RedirectToAction("AccesoProveedor");
         }
 
         [HttpPost]
@@ -44,8 +54,8 @@ namespace Omazon.Controllers
             HttpClient httpClient = new HttpClient();
             StringContent content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync("https://localhost:44353/Omazon/API/ManageAccess", content);
-            ViewBag.Ok = await response.Content.ReadAsStringAsync();
-            return View("Solicitudes");
+            TempData["msg"] = await response.Content.ReadAsStringAsync();
+            return RedirectToAction("Solicitudes");
         }
         public async Task<string> GetRequests()
         {
@@ -60,8 +70,8 @@ namespace Omazon.Controllers
         {
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.DeleteAsync("https://localhost:44353/Omazon/API/Delete-request/" + RequestId);
-            ViewBag.Ok= await response.Content.ReadAsStringAsync();
-            return View("Solicitudes");
+            TempData["msg"]= await response.Content.ReadAsStringAsync();
+            return RedirectToAction("Solicitudes");
         }
 
 
