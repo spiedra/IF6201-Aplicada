@@ -17,7 +17,7 @@
         },
         success: function (response) {
             
-            alert(response);
+            createModalResponse(response);
         },
         error: function () {
             createModalResponse(response);

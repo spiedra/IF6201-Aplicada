@@ -23,14 +23,14 @@
         </p>
         <h3 class="text-center text-success">Precio: @ViewBag.Producto.Precio US$</h3>
 
-        @*<form class="text-center mt-4" method="post">
+        <form class="text-center mt-4" method="post">
             <input type="text" id="idProducto" value="@ViewBag.Producto.IdProducto" hidden>
             <input type="text" id="precio" value="@ViewBag.Producto.Precio" hidden>
             <label for="cantidad" class="form-label">Cantidad:</label>
             <input type="number" class="form-control" id="cantidad" value="1" required>
             <button type="button" onclick="agregarACarrito(); return false;" class="btn btn-info text-light m-1">Agregar al carrito</button>
-            <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#checkOutModal">Comprar</button>
-        </form>*@
+          @*  <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#checkOutModal">Comprar</button>*@
+        </form>
     </div>
     <div class="modal fade" id="checkOutModal" tabindex="-1" aria-labelledby="checkOutModal" aria-hidden="true">
         <div class="modal-dialog modal-lg">
