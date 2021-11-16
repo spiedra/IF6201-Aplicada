@@ -2,7 +2,7 @@
 
 }
 
-@model Nest.ISearchResponse<ElasticProduct>
+@model Omazon.Models.ElasticProduct
 
     <div class="m-1 p-2 bg-dark text-light rounded">
         <h1 class="text-center">Resultados para: </h1>
@@ -11,9 +11,9 @@
 
 
     <div class="row m-1">
-        @if (Model.Documents.Any())
+        @if (ViewBag.busqueda!=null)
         {
-            @foreach (var producto in Model.Documents)
+            @foreach (var producto in ViewBag.busqueda)
             {
                 string imagenRuta = "/Imagenes/" + @producto.RutaImagen;
                 <form method="get" asp-controller="Producto" asp-action="Ver" class="col-sm-3 my-3">
@@ -29,13 +29,13 @@
                             </div>
                         </div>
                         <div class="card-footer row d-flex justify-content-end m-0">
-                            <input type="hidden" id="idProducto"  value="@producto.IdProducto" />
-                            <input type="hidden"  value="@producto.NombreProducto" />
-                            <input type="hidden"  value="@producto.Stock" />
-                            <input type="hidden" id="precio" value="@producto.Precio" />
-                            <input type="hidden" value="@producto.NombreProveedor" />
-                            <input type="hidden"  value="@producto.NombreCategoria" />
-                            <input type="hidden"  value="@producto.RutaImagen" />
+                            <input type="hidden" asp-for="@Model.IdProducto" id="idProducto"  value="@producto.IdProducto" />
+                            <input type="hidden" asp-for="@Model.NombreProducto"  value="@producto.NombreProducto" />
+                            <input type="hidden" asp-for="@Model.Stock"  value="@producto.Stock" />
+                            <input type="hidden" asp-for="@Model.Precio" id="precio" value="@producto.Precio" />
+                            <input type="hidden" asp-for="@Model.NombreProveedor" value="@producto.NombreProveedor" />
+                            <input type="hidden" asp-for="@Model.NombreCategoria" value="@producto.NombreCategoria" />
+                            <input type="hidden" asp-for="@Model.RutaImagen"  value="@producto.RutaImagen" />
                             <button type="submit" class="btn btn-primary col-4">Ver</button>
                         </div>
                     </div>

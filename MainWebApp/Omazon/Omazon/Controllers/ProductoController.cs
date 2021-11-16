@@ -147,16 +147,14 @@ namespace Omazon.Controllers
         {
             ISearchResponse<ElasticProduct> response;
 
-            //var searchRequest = new SearchRequest<ProductoModel>
-            //{
-            //    Query = Query<ProductoModel>.QueryString(qs => qs.Query($"*{productoBusqueda.NombreProducto}*").DefaultField(f => f.NombreProducto).DefaultOperator(Operator.And))
-            //};
-
-            //response = _client.Search<ProductoModel>(searchRequest);
-             response = _client.Search<ElasticProduct>(p => p.Query(q => q.MatchAll()));
-            //ViewBag.busqueda = response.Documents;
-            //ViewBag.valorBusqueda = productoBusqueda.NombreProducto;
-            return View(response);
+            var searchRequest = new SearchRequest<ProductoModel>
+            {
+                Query = Query<ProductoModel>.QueryString(qs => qs.Query($"*{productoBusqueda.NombreProducto}*").DefaultField(f => f.NombreProducto).DefaultOperator(Operator.And))
+            };
+            response = _client.Search<ElasticProduct>(searchRequest);
+            ViewBag.busqueda = response.Documents;
+            ViewBag.valorBusqueda = productoBusqueda.NombreProducto;
+            return View();
         }//BusquedaProducto
 
         public string AgregarProductoACarrito(int idProducto, int precio, int cantidad)

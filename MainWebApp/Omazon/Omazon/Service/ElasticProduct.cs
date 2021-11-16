@@ -7,26 +7,20 @@ namespace Omazon.Models
 {
     public class ElasticProduct
     {
-        public long IdProducto { get; set; }
-
-        public string NombreCategoria { get; set; }
+        public int? IdProducto { get; set; }
 
         public string NombreProducto { get; set; }
 
+        public int? Stock { get; set; }
+
+        public int? Precio { get; set; }
+
         public string NombreProveedor { get; set; }
-
-
-        public long Precio { get; set; }
 
         public string RutaImagen { get; set; }
 
-        public long Stock { get; set; }
+        public string NombreCategoria { get; set; }
 
-
-      
-
-        
-        
 
     }
 }
