@@ -1,0 +1,62 @@
+﻿@model Omazon.Models.ProveedorModel
+
+@{
+    ViewData["Title"] = "Prueba";
+
+}
+
+<div class="table-responsive">
+    <table class="table" id="table">
+        <tr>
+            <th>Nombre del proveedor</th>
+            <th>Producto</th>
+            <th>Categoria</th>
+            <th>Eliminar</th>
+        </tr>
+        @foreach (ProveedorModel temp in ViewBag.Proveedores)
+        {
+          <tr>
+          <td>@temp.nombre</td>
+          <td>@temp.nombreProducto</td>
+          <td>@temp.nombreCategoria</td>
+          <td>Eliminar</td>
+         </tr>
+        }
+    </table>
+</div>
+
+<script>
+
+
+    var table = document.getElementById('table');
+
+    for (var i = 1; i < table.rows.length; i++) {
+        table.rows[i].onclick = function () {
+
+            buscar(this.cells[1].innerHTML);
+        };
+    }
+
+    function buscar(nombre) {
+
+        var parametros = {
+            "nombre": nombre
+        };
+        $.ajax(
+            {
+                data: parametros,
+                url: '/Provider/DeshabilitarProducto',
+                type: 'post',
+                beforeSend: function () {
+                    
+                },
+                success: function (response) {
+                  
+                    alert('Deshabilitado');
+
+                }
+            }
+        );
+
+    }// buscar
+</script>
